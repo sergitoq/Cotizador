@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset='windows-1252'>
+<meta http-equiv='Cache-Control' content='no-cache, no-store, must-revalidate'>
+<meta http-equiv='Pragma' content='no-cache'>
+<meta http-equiv='Expires' content='0'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Cotizador Posta del Este</title>
+<style>
+body{font-family:Arial;background:#121212;color:#e6e6e6;padding:20px;}
+#box{background:#1d1d1d;padding:22px;border-radius:14px;}
+input,select{background:#222;color:#fff;border:1px solid #333;border-radius:8px;padding:10px;font-size:16px;margin:6px 4px;}
+button{background:#0a84ff;color:#fff;border:none;border-radius:8px;padding:12px 20px;font-size:18px;margin-top:12px;}
+button:disabled{background:#555;color:#aaa;}
+#resultado,#cotizacion{white-space:pre-wrap;background:#1a1a1a;border:1px solid #333;padding:16px;margin-top:20px;border-radius:10px;font-size:18px;}
+.error{color:#ff4c4c;font-weight:bold;font-size:20px;}
+.version{margin-top:20px;font-size:13px;color:#888;text-align:right;}
+.firma{font-size:12px;color:#999;font-weight:normal;}
+.verifBox{display:inline-flex;align-items:center;justify-content:center;height:48px;min-width:150px;border-radius:8px;font-size:16px;font-weight:bold;margin-left:10px;}
+.ok{background:#1f7a3a;color:#eaffea;}
+.bad{background:#8b1e1e;color:#ffecec;}
+.verifBox.ok::before{content:'? ';font-weight:bold;}
+.verifBox.bad::before{content:'? ';font-weight:bold;}
+.copiado{background:#2e7d32!important;color:#eaffea;}
+</style></head><body><div id='box'>
+<h3>Cotización y Vacante de Períodos</h3>
+<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding-left:0px;">
+<select id='selPeriodo' onchange="if(this.value){document.getElementById('codigo').value=this.value; buscar();}" style='max-width:90px;flex:0 0 auto;'>
+<option value=''>Período</option>
+</select>
+<input id='codigo' placeholder='Ej:1SFFD' oninput='buscar()' style='max-width:65px;flex:0 0 auto;'>
+<button onclick='limpiar()' style="margin-top:-4px;">Reset</button>
+</div>
+<div>
+par <select id='mat' onchange='buscar()'><option>0</option><option>1</option><option>2</option><option>3</option></select>
+may <select id='may' onchange='buscar()'><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+abu <select id='abu' onchange='buscar()'><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+</div>
+<div>
+hma <select id='hma' onchange='buscar()'><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+hme <select id='hme' onchange='buscar()'><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+inc <select id='inc' onchange='buscar()' style='width:80px;'><option value='-10'>-10%</option><option value='-5'>-5%</option><option value='-4'>-4%</option><option value='-3'>-3%</option><option value='0'>0%</option><option value='5'>+5%</option><option value='10'>+10%</option><option value='15'>+15%</option><option value='20'>+20%</option></select>
+</div>
+<div id='resultado'></div>
+<button id='btnCopiarWpp' onclick='copiarWpp()' disabled>COPIAR</button>
+<button id='btnCopiar' onclick='copiar()' disabled>COPIAR +ID</button>
+<script>
+const DB_FECHA='01/Nov/25';
+var datos={
+"1SD": `1SD 
+Sáb 06/12 al Sáb 13/12
+Disponible casa XX
+
+*Precio $710.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"2SD": `2SD 
+Sáb 13/12 al Sáb 20/12
+Disponible casa XX
+
+*Precio $710.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"3SD": `3SD 
+Sáb 20/12 al Sáb 27/12
+Disponible casa XX
+
+*Precio $780.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"4SD": `4SD Mauro Rodríguez 27.677.707 /47 Caba
++54 9 11 6209-3268
+Victorica 1018 Bernal Oeste BsAs
+Pa1 Ma Ab1 Hma Hme1
+Pre 850K Res 170K Gar 220K Sal680K`,
+"1SE": `1SE No está disponible`,
+"2SE": `2SE No está disponible`,
+"3SE": `3SE 
+Sáb 17/01 al Sáb 24/01
+Disponible casa XX
+
+*Precio $940.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"4SE": `4SE 
+Sáb 24/01 al Sáb 31/01
+Disponible casa XX
+
+*Precio $940.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"1SF": `1SF 
+Sáb 31/01 al Sáb 07/02
+Disponible casa XX
+
+*Precio $850.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"2SF": `2SF 
+Sáb 07/02 al Sáb 14/02
+Disponible casa XX
+
+*Precio $850.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"3SF": `3SF 
+Sáb 14/02 al Sáb 21/02
+Disponible casa XX
+
+*Precio $720.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"4SF": `4SF 
+Sáb 21/02 al Sáb 28/02
+Disponible casa XX
+
+*Precio $720.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"1SM": `1SM 
+Sáb 28/02 al Sáb 07/03
+Disponible casa XX
+
+*Precio $710.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"2SM": `2SM 
+Sáb 07/03 al Sáb 14/03
+Disponible casa XX
+
+*Precio $710.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"3SM": `3SM 
+Sáb 14/03 al Sáb 21/03
+Disponible casa XX
+
+*Precio $670.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"4SM": `4SM 
+Sáb 21/03 al Sáb 28/03
+Disponible casa XX
+
+*Precio $670.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"1QD": `1QD 
+Sáb 06/12 al Sáb 20/12
+Disponible casa XX
+
+*Precio $1.340.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"1*QD": `1*Q 
+Sáb 13/12 al Sáb 27/12
+Disponible casa XX
+
+*Precio $1.415.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"2QD": `2QD  No está disponible`,
+"2*QD": `2*Q  No está disponible`,
+"1QE": `1QE Juan Carlos Vido 24.058.829 /51 Tigre
++54 9 2613 73-3979
+Mf c6 Bº Leonangeli, Guaymallen, Mdz
+Pa1 Ma Ab Hma Hme1
+Pre 1740K Res 348K Gtia 350K Sal 1392K`,
+"1*QE": `1*Q  No está disponible`,
+"2QE": `2QE 
+Sáb 17/01 al Sáb 31/01
+Disponible casa XX
+
+*Precio $1.794.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"2*QE": `2*Q 
+Sáb 24/01 al Sáb 07/02
+Disponible casa XX
+
+*Precio $1.702.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"1QF": `1QF 
+Sáb 31/01 al Sáb 14/02
+Disponible casa XX
+
+*Precio $1.610.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"1*QF": `1*Q 
+Sáb 07/02 al Sáb 21/02
+Disponible casa XX
+
+*Precio $1.490.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"2QF": `2QF 
+Sáb 14/02 al Sáb 28/02
+Disponible casa XX
+
+*Precio $1.370.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"2*QF": `2*Q 
+Sáb 21/02 al Sáb 07/03
+Disponible casa XX
+
+*Precio $1.360.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"1QM": `1QM 
+Sáb 28/02 al Sáb 14/03
+Disponible casa XX
+
+*Precio $1.350.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"1*QM": `1*Q 
+Sáb 07/03 al Sáb 21/03
+Disponible casa XX
+
+*Precio $1.315.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+"2QM": `2QM 
+Sáb 14/03 al Sáb 28/03
+Disponible casa XX
+
+*Precio $1.280.000.-*
+
+Reserva 20% aprox. saldo en mano al ingreso.
+
+https://www.PostaDelEste.com.ar/casa-XX`,
+};
+function cargarPeriodos(){
+var s=document.getElementById('selPeriodo');
+if(!s) return;
+while(s.options.length>1) s.remove(1);
+Object.keys(datos).sort().forEach(function(k){
+var o=document.createElement('option');o.value=k;o.textContent=k;s.appendChild(o);
+});
+}
+async function generarHash(str){
+const enc=new TextEncoder().encode(str);
+const buf=await crypto.subtle.digest('SHA-256',enc);
+return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('').substring(0,4).toUpperCase();
+}
+function buscar(){
+var btn=document.getElementById('btnCopiar');
+var btnWpp=document.getElementById('btnCopiarWpp');
+var bv=document.getElementById('btnVerificar'); if(bv) bv.disabled=true;
+btn.disabled=true;
+if(btnWpp) btnWpp.disabled=true;
+document.getElementById('cotizacion').textContent='';
+var c=codigo.value.toUpperCase();
+var suf='',base=c;
+if(c.endsWith('FD')||c.endsWith('FT')){suf=c.slice(-2);base=c.slice(0,-2);}
+var t=datos[base]||'';
+var m=+mat.value,y=+may.value,a=+abu.value,hy=+hma.value,hn=+hme.value;
+var p=m*2+y+a+hy+hn;
+if(p>6){
+resultado.innerHTML='<span class="error">Capacidad máxima 6 personas</span>';
+return;}
+if(!t){resultado.textContent='';var bl=document.getElementById('btnCopiarLargo'); if(bl) bl.disabled=true; return;}
+t=(suf==='FT')?t.replace('casa XX','casa Frente (amarilla)').replace(/casa-xx/i,'casa-frente'):t.replace('casa XX','casa Fondo (ladrillos rojos)').replace(/casa-xx/i,'casa-fondo');
+var extra='';
+if(m)extra+=m+'par+';if(y)extra+=y+'may+';if(a)extra+=a+'abu+';if(hy)extra+=hy+'hma+';if(hn)extra+=hn+'hme+';
+if(extra)extra=extra.slice(0,-1);
+if(extra) t = base + ' ' + extra + ' (' + p + ' pers)\n' + t.substring(base.length);
+var f=new Date();
+var dd=f.getDate().toString().padStart(2,'0');
+var mmm=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'][f.getMonth()];
+var aa=f.getFullYear().toString().slice(-2);
+var fecha='Cotización '+dd+'-'+mmm;
+resultado.textContent=t;
+(async function(){
+var precioBase=+(t.match(/\$[\d\.]+/)||[''])[0].replace(/\D/g,'');
+var incPct=+inc.value||0;
+var precio=Math.round(precioBase*(1+incPct/100));
+t=t.replace(/\$[\d\.]+/,'$'+precio.toLocaleString('es-AR'));
+resultado.textContent = t;
+var fechaLimpia=fecha.replace('Cotización ','');
+var firmaBase=base+'|'+p+'|'+precio+'|'+fechaLimpia;
+var hash=await generarHash(firmaBase);
+var firmaHTML='<div class="firma">_Cotiz.: '+hash+' '+fechaLimpia+'\t Lista: '+DB_FECHA+'_</div>';
+v_per.value = base;
+v_pers.value = p;
+v_precio.value = precio;
+v_fecha.value = fechaLimpia;
+v_firma.value = hash;
+var bv=document.getElementById('btnVerificar'); if(bv) bv.disabled=false;
+document.querySelectorAll('.firma').forEach(e=>e.remove());
+resultado.textContent = resultado.textContent.trim();
+resultado.insertAdjacentHTML('afterend', firmaHTML);
+btn.disabled=false;
+if(btnWpp) btnWpp.disabled=false;
+generarLargo(resultado.textContent);
+cotizacion.innerHTML+='\n'+firmaHTML;
+var bl=document.getElementById('btnCopiarLargo'); if(bl) bl.disabled=false;
+})();
+}
+function copiar(){
+if(btnCopiar.disabled) return;
+var texto=resultado.textContent;
+var firma=document.querySelector('.firma');
+if(firma) texto+='\n\n'+firma.textContent;
+navigator.clipboard.writeText(texto);
+btnCopiar.textContent='COPIADO OK';
+btnCopiar.classList.add('copiado');
+setTimeout(function(){
+btnCopiar.textContent='COPIAR+ID';
+btnCopiar.classList.remove('copiado');
+},1500);
+}
+function setDefaults(){
+  mat.value=0;
+  may.value=0;
+  abu.value=0;
+  hma.value=0;
+  hme.value=0;
+  inc.value=0;
+}
+function limpiar(){
+setDefaults();
+codigo.value='';
+var s=document.getElementById('selPeriodo'); if(s) s.value='';
+resultado.textContent='';cotizacion.textContent='';btnCopiar.disabled=true;
+var bw=document.getElementById('btnCopiarWpp'); if(bw) bw.disabled=true;
+var bl=document.getElementById('btnCopiarLargo'); if(bl) bl.disabled=true;
+var bv=document.getElementById('btnVerificar'); if(bv) bv.disabled=true;
+v_per.value='';v_pers.value='';v_precio.value='';v_fecha.value='';v_firma.value='';
+v_resultado.textContent='';v_resultado.className='verifBox';
+document.querySelectorAll('.firma').forEach(e=>e.remove());
+codigo.focus();
+}
+function generarLargo(textoCorto,firmaHTML){
+if(!textoCorto)return;
+var largo='';
+largo+='Hola! ¿Cómo estás? Buen día!\n\n';
+largo+=textoCorto+'\n\n';
+largo+='El saldo deberá ser cancelado en efectivo al ingreso.\n';
+largo+='Solo el depósito de la reserva congela el precio.\n';
+largo+='Los precios se ajustan semanalmente.\n\n';
+largo+='En nuestra página podés encontrar información adicional, detalles y fotos.\n';
+largo+='www.PostaDelEste.com.ar\n\n';
+largo+='Alcances de lo ofrecido\nwww.PostaDelEste.com.ar/alcances\n\n';
+largo+='Cualquier inquietud no dudes en contactarnos!\nGracias por tu consulta!\n\n';
+largo+='Cordiales saludos,\nSergio.\n\n';
+largo+='Posta del Este.\n+54 11 6789-9975\nwww.PostaDelEste.com.ar\n\n';
+largo+='(Consultá por WhatsApp de 9.00 a 21.00 es más rápido)\n';
+cotizacion.textContent=largo;}
+async function verificar(){
+var base=v_per.value+'|'+v_pers.value+'|'+v_precio.value+'|'+v_fecha.value;
+var esperado=await generarHash(base);
+if(esperado===v_firma.value.toUpperCase()){
+v_resultado.textContent='Cotización íntegra';
+v_resultado.className='verifBox ok';
+}else{
+v_resultado.textContent='Cotización alterada';
+v_resultado.className='verifBox bad';
+}
+}
+function copiarWpp(){
+var t=resultado.textContent.trim();
+if(t==='') return;
+navigator.clipboard.writeText(t);
+var b=document.getElementById('btnCopiarWpp');
+if(!b) return;
+b.textContent='COPIADO OK';
+b.classList.add('copiado');
+setTimeout(function(){
+b.textContent='COPIAR';
+b.classList.remove('copiado');
+},1500);
+}
+function copiarLargo(){
+if(cotizacion.textContent.trim()==='') return;
+navigator.clipboard.writeText(cotizacion.textContent);
+var b=document.getElementById('btnCopiarLargo');
+if(!b) return;
+b.textContent='COPIADO OK';
+b.classList.add('copiado');
+setTimeout(function(){
+b.textContent='COPIAR COTIZACIÓN';
+b.classList.remove('copiado');
+},1500);
+}
+window.addEventListener('load',function(){
+cargarPeriodos();
+setDefaults();
+});
+</script>
+<h3 style="margin-top:30px;">Cotización Extendida</h3>
+<div id='cotizacion' style='margin-bottom:25px;'></div>
+<button id='btnCopiarLargo' onclick='copiarLargo()' disabled>COPIAR Extendida</button>
+<h3 style="margin-top:30px;">Verificar cotización</h3>
+<div style='font-size:14px;color:#ccc;'>
+Periodo <input id='v_per' style='width:70px;'> Personas <input id='v_pers' style='width:40px;'> Precio <input id='v_precio' style='width:70px;'> Fecha <input id='v_fecha' style='width:80px;'> Firma <input id='v_firma' style='width:80px;'>
+<br><br><button id='btnVerificar' onclick='verificar()' disabled>VERIFICAR</button><div id='v_resultado' class='verifBox'></div>
+</div>
+<div class='version'>Ver. v2.09 24-dic-25 / Database 24-Dec-25 19:29</div>
+</div></body></html>
