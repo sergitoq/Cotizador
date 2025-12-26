@@ -23,10 +23,10 @@ button:disabled{background:#555;color:#aaa;}
 .verifBox.bad::before{content:'? ';font-weight:bold;}
 .copiado{background:#2e7d32!important;color:#eaffea;}
 </style></head><body><div id='box'>
-<h3>Cotizaci√≥n y Vacante de Per√≠odos</h3>
+<h3>CotizaciÛn y Vacante de PerÌodos</h3>
 <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding-left:0px;">
 <select id='selPeriodo' onchange="if(this.value){document.getElementById('codigo').value=this.value; buscar();}" style='max-width:90px;flex:0 0 auto;'>
-<option value=''>Per√≠odo</option>
+<option value=''>PerÌodo</option>
 </select>
 <input id='codigo' placeholder='Ej:1SFFD' oninput='buscar()' style='max-width:65px;flex:0 0 auto;'>
 <button onclick='limpiar()' style="margin-top:-4px;">Reset</button>
@@ -48,7 +48,7 @@ inc <select id='inc' onchange='buscar()' style='width:80px;'><option value='-10'
 const DB_FECHA='01/Nov/25';
 var datos={
 "1SD": `1SD 
-S√°b 06/12 al S√°b 13/12
+S·b 06/12 al S·b 13/12
 Disponible casa XX
 
 *Precio $710.000.-*
@@ -57,7 +57,7 @@ Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "2SD": `2SD 
-S√°b 13/12 al S√°b 20/12
+S·b 13/12 al S·b 20/12
 Disponible casa XX
 
 *Precio $710.000.-*
@@ -66,7 +66,7 @@ Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "3SD": `3SD 
-S√°b 20/12 al S√°b 27/12
+S·b 20/12 al S·b 27/12
 Disponible casa XX
 
 *Precio $780.000.-*
@@ -74,15 +74,15 @@ Disponible casa XX
 Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
-"4SD": `4SD Mauro Rodr√≠guez 27.677.707 /47 Caba
+"4SD": `4SD Mauro RodrÌguez 27.677.707 /47 Caba
 +54 9 11 6209-3268
 Victorica 1018 Bernal Oeste BsAs
 Pa1 Ma Ab1 Hma Hme1
 Pre 850K Res 170K Gar 220K Sal680K`,
-"1SE": `1SE No est√° disponible`,
-"2SE": `2SE No est√° disponible`,
+"1SE": `1SE No est· disponible`,
+"2SE": `2SE No est· disponible`,
 "3SE": `3SE 
-S√°b 17/01 al S√°b 24/01
+S·b 17/01 al S·b 24/01
 Disponible casa XX
 
 *Precio $940.000.-*
@@ -91,7 +91,7 @@ Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "4SE": `4SE 
-S√°b 24/01 al S√°b 31/01
+S·b 24/01 al S·b 31/01
 Disponible casa XX
 
 *Precio $940.000.-*
@@ -100,43 +100,43 @@ Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "1SF": `1SF 
-S√°b 31/01 al S√°b 07/02
+S·b 31/01 al S·b 07/02
 Disponible casa XX
 
-*Precio $850.000.-*
+*Precio $800.000.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "2SF": `2SF 
-S√°b 07/02 al S√°b 14/02
+S·b 07/02 al S·b 14/02
 Disponible casa XX
 
-*Precio $850.000.-*
+*Precio $800.000.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "3SF": `3SF 
-S√°b 14/02 al S√°b 21/02
+S·b 14/02 al S·b 21/02
 Disponible casa XX
 
-*Precio $720.000.-*
+*Precio $760.000.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "4SF": `4SF 
-S√°b 21/02 al S√°b 28/02
+S·b 21/02 al S·b 28/02
 Disponible casa XX
 
-*Precio $720.000.-*
+*Precio $760.000.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "1SM": `1SM 
-S√°b 28/02 al S√°b 07/03
+S·b 28/02 al S·b 07/03
 Disponible casa XX
 
 *Precio $710.000.-*
@@ -145,7 +145,7 @@ Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "2SM": `2SM 
-S√°b 07/03 al S√°b 14/03
+S·b 07/03 al S·b 14/03
 Disponible casa XX
 
 *Precio $710.000.-*
@@ -154,7 +154,7 @@ Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "3SM": `3SM 
-S√°b 14/03 al S√°b 21/03
+S·b 14/03 al S·b 21/03
 Disponible casa XX
 
 *Precio $670.000.-*
@@ -163,7 +163,7 @@ Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "4SM": `4SM 
-S√°b 21/03 al S√°b 28/03
+S·b 21/03 al S·b 28/03
 Disponible casa XX
 
 *Precio $670.000.-*
@@ -172,7 +172,7 @@ Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "1QD": `1QD 
-S√°b 06/12 al S√°b 20/12
+S·b 06/12 al S·b 20/12
 Disponible casa XX
 
 *Precio $1.340.000.-*
@@ -181,7 +181,7 @@ Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "1*QD": `1*Q 
-S√°b 13/12 al S√°b 27/12
+S·b 13/12 al S·b 27/12
 Disponible casa XX
 
 *Precio $1.415.000.-*
@@ -189,16 +189,16 @@ Disponible casa XX
 Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
-"2QD": `2QD  No est√° disponible`,
-"2*QD": `2*Q  No est√° disponible`,
+"2QD": `2QD  No est· disponible`,
+"2*QD": `2*Q  No est· disponible`,
 "1QE": `1QE Juan Carlos Vido 24.058.829 /51 Tigre
 +54 9 2613 73-3979
-Mf c6 B¬∫ Leonangeli, Guaymallen, Mdz
+Mf c6 B∫ Leonangeli, Guaymallen, Mdz
 Pa1 Ma Ab Hma Hme1
 Pre 1740K Res 348K Gtia 350K Sal 1392K`,
-"1*QE": `1*Q  No est√° disponible`,
+"1*QE": `1*Q  No est· disponible`,
 "2QE": `2QE 
-S√°b 17/01 al S√°b 31/01
+S·b 17/01 al S·b 31/01
 Disponible casa XX
 
 *Precio $1.794.000.-*
@@ -207,52 +207,52 @@ Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "2*QE": `2*Q 
-S√°b 24/01 al S√°b 07/02
+S·b 24/01 al S·b 07/02
 Disponible casa XX
 
-*Precio $1.702.000.-*
+*Precio $1.657.000.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "1QF": `1QF 
-S√°b 31/01 al S√°b 14/02
+S·b 31/01 al S·b 14/02
 Disponible casa XX
 
-*Precio $1.610.000.-*
+*Precio $1.520.000.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "1*QF": `1*Q 
-S√°b 07/02 al S√°b 21/02
+S·b 07/02 al S·b 21/02
 Disponible casa XX
 
-*Precio $1.490.000.-*
+*Precio $1.480.000.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "2QF": `2QF 
-S√°b 14/02 al S√°b 28/02
+S·b 14/02 al S·b 28/02
 Disponible casa XX
 
-*Precio $1.370.000.-*
+*Precio $1.440.000.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "2*QF": `2*Q 
-S√°b 21/02 al S√°b 07/03
+S·b 21/02 al S·b 07/03
 Disponible casa XX
 
-*Precio $1.360.000.-*
+*Precio $1.395.000.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "1QM": `1QM 
-S√°b 28/02 al S√°b 14/03
+S·b 28/02 al S·b 14/03
 Disponible casa XX
 
 *Precio $1.350.000.-*
@@ -261,7 +261,7 @@ Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "1*QM": `1*Q 
-S√°b 07/03 al S√°b 21/03
+S·b 07/03 al S·b 21/03
 Disponible casa XX
 
 *Precio $1.315.000.-*
@@ -270,7 +270,7 @@ Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "2QM": `2QM 
-S√°b 14/03 al S√°b 28/03
+S·b 14/03 al S·b 28/03
 Disponible casa XX
 
 *Precio $1.280.000.-*
@@ -306,7 +306,7 @@ var t=datos[base]||'';
 var m=+mat.value,y=+may.value,a=+abu.value,hy=+hma.value,hn=+hme.value;
 var p=m*2+y+a+hy+hn;
 if(p>6){
-resultado.innerHTML='<span class="error">Capacidad m√°xima 6 personas</span>';
+resultado.innerHTML='<span class="error">Capacidad m·xima 6 personas</span>';
 return;}
 if(!t){resultado.textContent='';var bl=document.getElementById('btnCopiarLargo'); if(bl) bl.disabled=true; return;}
 t=(suf==='FT')?t.replace('casa XX','casa Frente (amarilla)').replace(/casa-xx/i,'casa-frente'):t.replace('casa XX','casa Fondo (ladrillos rojos)').replace(/casa-xx/i,'casa-fondo');
@@ -318,7 +318,7 @@ var f=new Date();
 var dd=f.getDate().toString().padStart(2,'0');
 var mmm=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'][f.getMonth()];
 var aa=f.getFullYear().toString().slice(-2);
-var fecha='Cotizaci√≥n '+dd+'-'+mmm;
+var fecha='CotizaciÛn '+dd+'-'+mmm;
 resultado.textContent=t;
 (async function(){
 var precioBase=+(t.match(/\$[\d\.]+/)||[''])[0].replace(/\D/g,'');
@@ -326,7 +326,7 @@ var incPct=+inc.value||0;
 var precio=Math.round(precioBase*(1+incPct/100));
 t=t.replace(/\$[\d\.]+/,'$'+precio.toLocaleString('es-AR'));
 resultado.textContent = t;
-var fechaLimpia=fecha.replace('Cotizaci√≥n ','');
+var fechaLimpia=fecha.replace('CotizaciÛn ','');
 var firmaBase=base+'|'+p+'|'+precio+'|'+fechaLimpia;
 var hash=await generarHash(firmaBase);
 var firmaHTML='<div class="firma">_Cotiz.: '+hash+' '+fechaLimpia+'\t Lista: '+DB_FECHA+'_</div>';
@@ -383,27 +383,27 @@ codigo.focus();
 function generarLargo(textoCorto,firmaHTML){
 if(!textoCorto)return;
 var largo='';
-largo+='Hola! ¬øC√≥mo est√°s? Buen d√≠a!\n\n';
+largo+='Hola! øCÛmo est·s? Buen dÌa!\n\n';
 largo+=textoCorto+'\n\n';
-largo+='El saldo deber√° ser cancelado en efectivo al ingreso.\n';
-largo+='Solo el dep√≥sito de la reserva congela el precio.\n';
+largo+='El saldo deber· ser cancelado en efectivo al ingreso.\n';
+largo+='Solo el depÛsito de la reserva congela el precio.\n';
 largo+='Los precios se ajustan semanalmente.\n\n';
-largo+='En nuestra p√°gina pod√©s encontrar informaci√≥n adicional, detalles y fotos.\n';
+largo+='En nuestra p·gina podÈs encontrar informaciÛn adicional, detalles y fotos.\n';
 largo+='www.PostaDelEste.com.ar\n\n';
 largo+='Alcances de lo ofrecido\nwww.PostaDelEste.com.ar/alcances\n\n';
 largo+='Cualquier inquietud no dudes en contactarnos!\nGracias por tu consulta!\n\n';
 largo+='Cordiales saludos,\nSergio.\n\n';
 largo+='Posta del Este.\n+54 11 6789-9975\nwww.PostaDelEste.com.ar\n\n';
-largo+='(Consult√° por WhatsApp de 9.00 a 21.00 es m√°s r√°pido)\n';
+largo+='(Consult· por WhatsApp de 9.00 a 21.00 es m·s r·pido)\n';
 cotizacion.textContent=largo;}
 async function verificar(){
 var base=v_per.value+'|'+v_pers.value+'|'+v_precio.value+'|'+v_fecha.value;
 var esperado=await generarHash(base);
 if(esperado===v_firma.value.toUpperCase()){
-v_resultado.textContent='Cotizaci√≥n √≠ntegra';
+v_resultado.textContent='CotizaciÛn Ìntegra';
 v_resultado.className='verifBox ok';
 }else{
-v_resultado.textContent='Cotizaci√≥n alterada';
+v_resultado.textContent='CotizaciÛn alterada';
 v_resultado.className='verifBox bad';
 }
 }
@@ -428,7 +428,7 @@ if(!b) return;
 b.textContent='COPIADO OK';
 b.classList.add('copiado');
 setTimeout(function(){
-b.textContent='COPIAR COTIZACI√ìN';
+b.textContent='COPIAR COTIZACI”N';
 b.classList.remove('copiado');
 },1500);
 }
@@ -437,13 +437,13 @@ cargarPeriodos();
 setDefaults();
 });
 </script>
-<h3 style="margin-top:30px;">Cotizaci√≥n Extendida</h3>
+<h3 style="margin-top:30px;">CotizaciÛn Extendida</h3>
 <div id='cotizacion' style='margin-bottom:25px;'></div>
 <button id='btnCopiarLargo' onclick='copiarLargo()' disabled>COPIAR Extendida</button>
-<h3 style="margin-top:30px;">Verificar cotizaci√≥n</h3>
+<h3 style="margin-top:30px;">Verificar cotizaciÛn</h3>
 <div style='font-size:14px;color:#ccc;'>
 Periodo <input id='v_per' style='width:70px;'> Personas <input id='v_pers' style='width:40px;'> Precio <input id='v_precio' style='width:70px;'> Fecha <input id='v_fecha' style='width:80px;'> Firma <input id='v_firma' style='width:80px;'>
 <br><br><button id='btnVerificar' onclick='verificar()' disabled>VERIFICAR</button><div id='v_resultado' class='verifBox'></div>
 </div>
-<div class='version'>Ver. v2.09 24-dic-25 / Database 24-Dec-25 19:29</div>
+<div class='version'>Ver. v2.09 24-dic-25 / Database 26-Dec-25 16:33</div>
 </div></body></html>
