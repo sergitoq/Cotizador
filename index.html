@@ -75,11 +75,7 @@ Disponible casa XX
 Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
-"4SD": `4SD Mauro Rodríguez 27.677.707 /47 Caba
-+54 9 11 6209-3268
-Victorica 1018 Bernal Oeste BsAs
-Pa1 Ma Ab1 Hma Hme1
-Pre 850K Res 170K Gar 220K Sal680K`,
+"4SD": `4SD No está disponible`,
 "1SE": `1SE No está disponible`,
 "2SE": `2SE No está disponible`,
 "3SE": `3SE 
@@ -192,11 +188,7 @@ Reserva 20% aprox. saldo en mano al ingreso.
 https://www.PostaDelEste.com.ar/casa-XX`,
 "2QD": `2QD  No está disponible`,
 "2*QD": `2*Q  No está disponible`,
-"1QE": `1QE Juan Carlos Vido 24.058.829 /51 Tigre
-+54 9 2613 73-3979
-Mf c6 Bº Leonangeli, Guaymallen, Mdz
-Pa1 Ma Ab Hma Hme1
-Pre 1740K Res 348K Gtia 350K Sal 1392K`,
+"1QE": `1QE  No está disponible`,
 "1*QE": `1*Q  No está disponible`,
 "2QE": `2QE 
 Sáb 17/01 al Sáb 31/01
@@ -304,8 +296,24 @@ var c=codigo.value.toUpperCase();
 var suf='',base=c;
 if(c.endsWith('FD')||c.endsWith('FT')){suf=c.slice(-2);base=c.slice(0,-2);}
 var t=datos[base]||'';
+if(t && t.toLowerCase().includes(' no está disponible')){
+  resultado.textContent = t;
+  btn.disabled = true;
+  if(btnWpp) btnWpp.disabled = true;
+  var bl=document.getElementById('btnCopiarLargo'); if(bl) bl.disabled=true;
+  var bv=document.getElementById('btnVerificar'); if(bv) bv.disabled=true;
+  return;
+}
 var m=+mat.value,y=+may.value,a=+abu.value,hy=+hma.value,hn=+hme.value;
 var p=m*2+y+a+hy+hn;
+if(p===0){
+  resultado.textContent='';
+  btn.disabled = true;
+  if(btnWpp) btnWpp.disabled = true;
+  var bl=document.getElementById('btnCopiarLargo'); if(bl) bl.disabled=true;
+  var bv=document.getElementById('btnVerificar'); if(bv) bv.disabled=true;
+  return;
+}
 if(p>6){
 resultado.innerHTML='<span class="error">Capacidad máxima 6 personas</span>';
 return;}
@@ -446,5 +454,5 @@ setDefaults();
 Periodo <input id='v_per' style='width:70px;'> Personas <input id='v_pers' style='width:40px;'> Precio <input id='v_precio' style='width:70px;'> Fecha <input id='v_fecha' style='width:80px;'> Firma <input id='v_firma' style='width:80px;'>
 <br><br><button id='btnVerificar' onclick='verificar()' disabled>VERIFICAR</button><div id='v_resultado' class='verifBox'></div>
 </div>
-<div class='version'>Ver. v2.10 27-dic-25 / Database 27-Dec-25 08:13</div>
+<div class='version'>Ver. v2.11 27-dic-25 / Database 27-Dec-25 11:40</div>
 </div></body></html>
