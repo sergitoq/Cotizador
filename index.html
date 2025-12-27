@@ -40,7 +40,10 @@ abu <select id='abu' onchange='buscar()'><option>0</option><option>1</option><op
 <div>
 hma <select id='hma' onchange='buscar()'><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
 hme <select id='hme' onchange='buscar()'><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
-Ind <select id='inc' onchange='buscar()' style='width:80px;'><option value='-10'>-10%</option><option value='-5'>-5%</option><option value='-4'>-4%</option><option value='-3'>-3%</option><option value='0'>0%</option><option value='5'>+5%</option><option value='10'>+10%</option><option value='15'>+15%</option><option value='20'>+20%</option></select>
+</div>
+<div>
+mon <select id='mon' onchange='buscar()' style='width:70px;'><option value='ars'>$</option><option value='usd'>usd</option></select>
+Ind <select id='inc' onchange='buscar()' style='width:80px;'><option value='-10'>-10%</option><option value='-5'>-5%</option><option value='0'>0%</option><option value='5'>+5%</option><option value='10'>+10%</option><option value='15'>+15%</option><option value='20'>+20%</option></select>
 </div>
 <div id='resultado'></div>
 <button id='btnCopiarWpp' onclick='copiarWpp()' disabled>COPIAR</button>
@@ -52,7 +55,7 @@ var datos={
 Sáb 06/12 al Sáb 13/12
 Disponible casa XX
 
-*Precio $710.000.-*
+*Precio $710.000.-* *Precio usd 480.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -61,7 +64,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 13/12 al Sáb 20/12
 Disponible casa XX
 
-*Precio $710.000.-*
+*Precio $710.000.-* *Precio usd 480.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -70,7 +73,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 20/12 al Sáb 27/12
 Disponible casa XX
 
-*Precio $780.000.-*
+*Precio $780.000.-* *Precio usd 530.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -82,7 +85,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 17/01 al Sáb 24/01
 Disponible casa XX
 
-*Precio $940.000.-*
+*Precio $940.000.-* *Precio usd 640.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -91,7 +94,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 24/01 al Sáb 31/01
 Disponible casa XX
 
-*Precio $940.000.-*
+*Precio $940.000.-* *Precio usd 640.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -100,7 +103,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 31/01 al Sáb 07/02
 Disponible casa XX
 
-*Precio $800.000.-*
+*Precio $800.000.-* *Precio usd 540.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -109,7 +112,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 07/02 al Sáb 14/02
 Disponible casa XX
 
-*Precio $800.000.-*
+*Precio $800.000.-* *Precio usd 540.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -118,7 +121,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 14/02 al Sáb 21/02
 Disponible casa XX
 
-*Precio $760.000.-*
+*Precio $760.000.-* *Precio usd 520.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -127,7 +130,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 21/02 al Sáb 28/02
 Disponible casa XX
 
-*Precio $760.000.-*
+*Precio $760.000.-* *Precio usd 520.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -136,7 +139,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 28/02 al Sáb 07/03
 Disponible casa XX
 
-*Precio $710.000.-*
+*Precio $710.000.-* *Precio usd 480.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -145,7 +148,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 07/03 al Sáb 14/03
 Disponible casa XX
 
-*Precio $710.000.-*
+*Precio $710.000.-* *Precio usd 480.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -154,7 +157,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 14/03 al Sáb 21/03
 Disponible casa XX
 
-*Precio $670.000.-*
+*Precio $670.000.-* *Precio usd 450.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -163,7 +166,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 21/03 al Sáb 28/03
 Disponible casa XX
 
-*Precio $670.000.-*
+*Precio $670.000.-* *Precio usd 450.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -172,7 +175,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 06/12 al Sáb 20/12
 Disponible casa XX
 
-*Precio $1.340.000.-*
+*Precio $1.340.000.-* *Precio usd 910.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -181,7 +184,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 13/12 al Sáb 27/12
 Disponible casa XX
 
-*Precio $1.415.000.-*
+*Precio $1.415.000.-* *Precio usd960.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -194,7 +197,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 17/01 al Sáb 31/01
 Disponible casa XX
 
-*Precio $1.794.000.-*
+*Precio $1.794.000.-* *Precio usd 1.220.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -203,7 +206,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 24/01 al Sáb 07/02
 Disponible casa XX
 
-*Precio $1.657.000.-*
+*Precio $1.657.000.-* *Precio usd1.120.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -212,7 +215,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 31/01 al Sáb 14/02
 Disponible casa XX
 
-*Precio $1.520.000.-*
+*Precio $1.520.000.-* *Precio usd 1.030.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -221,7 +224,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 07/02 al Sáb 21/02
 Disponible casa XX
 
-*Precio $1.480.000.-*
+*Precio $1.480.000.-* *Precio usd1.000.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -230,7 +233,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 14/02 al Sáb 28/02
 Disponible casa XX
 
-*Precio $1.440.000.-*
+*Precio $1.440.000.-* *Precio usd 980.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -239,7 +242,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 21/02 al Sáb 07/03
 Disponible casa XX
 
-*Precio $1.395.000.-*
+*Precio $1.395.000.-* *Precio usd950.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -248,7 +251,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 28/02 al Sáb 14/03
 Disponible casa XX
 
-*Precio $1.350.000.-*
+*Precio $1.350.000.-* *Precio usd 920.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -257,7 +260,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 07/03 al Sáb 21/03
 Disponible casa XX
 
-*Precio $1.315.000.-*
+*Precio $1.315.000.-* *Precio usd890.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -266,7 +269,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 14/03 al Sáb 28/03
 Disponible casa XX
 
-*Precio $1.280.000.-*
+*Precio $1.280.000.-* *Precio usd 870.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -333,8 +336,16 @@ resultado.textContent=t;
 var precioBase=+(t.match(/\$[\d\.]+/)||[''])[0].replace(/\D/g,'');
 var incPct=+inc.value||0;
 var precio=Math.round(precioBase*(1+incPct/100));
-t=t.replace(/\$[\d\.]+/,'$'+precio.toLocaleString('es-AR'));
+t=t.replace(/\$[\d\.]+-/,'$'+precio.toLocaleString('es-AR')+'.-');
 resultado.textContent = t;
+resultado.textContent = resultado.textContent.replace(/(\*Precio\s+\$[\d\.]+\.\-\*)/,'$1\n\n');
+var txt = resultado.textContent;
+if(mon.value==='usd'){
+  txt = txt.replace(/\*Precio\s+\$[^\*]*\*\s*/gi,'');
+}else{
+  txt = txt.replace(/\*Precio\s+usd[^\*]*\*\s*/gi,'');
+}
+resultado.textContent = txt.trim();
 var fechaLimpia=fecha.replace('Cotización ','');
 var firmaBase=base+'|'+p+'|'+precio+'|'+fechaLimpia;
 var hash=await generarHash(firmaBase);
@@ -454,5 +465,5 @@ setDefaults();
 Periodo <input id='v_per' style='width:70px;'> Personas <input id='v_pers' style='width:40px;'> Precio <input id='v_precio' style='width:70px;'> Fecha <input id='v_fecha' style='width:80px;'> Firma <input id='v_firma' style='width:80px;'>
 <br><br><button id='btnVerificar' onclick='verificar()' disabled>VERIFICAR</button><div id='v_resultado' class='verifBox'></div>
 </div>
-<div class='version'>Ver. v2.11 27-dic-25 / Database 27-Dec-25 11:40</div>
+<div class='version'>Ver. v2.13 27-dic-25 / Database 27-Dec-25 20:33</div>
 </div></body></html>
