@@ -357,15 +357,36 @@ var aa=f.getFullYear().toString().slice(-2);
 var fecha='Cotización '+dd+'-'+mmm;
 resultado.textContent=t;
 (async function(){
+var incPar = 0;
+if (m > 1) {
+    incPar = (m - 1) * 20;
+}
+var incBase = +inc.value || 0;
+var incMay = 0;
+var incPers = 0;
+var incPar = 0;
+
+if (y > 0) {
+    incMay = y * 10;
+}
+
+if (p === 5) incPers = 5;
+if (p === 6) incPers = 10;
+
+if (m > 1) {
+    incPar = (m - 1) * 20;
+}
+
+var incTotal = incBase + incMay + incPers + incPar;
 var incPct=+inc.value||0;
 var precioBase=+(t.match(/\$[\d\.]+/)||[''])[0].replace(/\D/g,'');
-var precioARS=Math.round(precioBase*(1+incPct/100));
+var precioARS=Math.round(precioBase*(1+incTotal/100));
 t=t.replace(/\$[\d\.]+-/,'$'+precioARS.toLocaleString('es-AR')+'.-');
 var usdMatch=t.match(/usd\s*[\d\.]+/i);
 var precioUSD=0;
 if(usdMatch){
   var usdBase=+usdMatch[0].replace(/\D/g,'');
-  precioUSD=Math.round(usdBase*(1+incPct/100));
+  precioUSD=Math.round(usdBase*(1+incTotal/100));
   t=t.replace(/usd\s*[\d\.\-]+/i,'usd '+precioUSD.toLocaleString('es-AR')+'.-');
 }
 resultado.textContent = t;
@@ -497,5 +518,5 @@ setDefaults();
 Periodo <input id='v_per' style='width:70px;'> Personas <input id='v_pers' style='width:40px;'> Precio <input id='v_precio' style='width:70px;'> Fecha <input id='v_fecha' style='width:80px;'> Firma <input id='v_firma' style='width:80px;'>
 <br><br><button id='btnVerificar' onclick='verificar()' disabled>VERIFICAR</button><div id='v_resultado' class='verifBox'></div>
 </div>
-<div class='version'>Ver. v2.15 28-dic-25 / Database 28-Dec-25 14:42</div>
+<div class='version'>Ver. v2.15 28-dic-25 / Database 28-Dec-25 15:22</div>
 </div></body></html>
