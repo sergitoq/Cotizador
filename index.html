@@ -44,13 +44,13 @@ hme <select id='hme' onchange='buscar()'><option>0</option><option>1</option><op
 <div>
 mon <select id='mon' onchange='buscar()' style='width:70px;'><option value='ars'>$</option><option value='usd'>usd</option></select>
 Ind <select id='inc' onchange='buscar()' style='width:80px;'><option value='-10'>-10%</option><option value='-5'>-5%</option><option value='0'>0%</option><option value='5'>+5%</option><option value='10'>+10%</option><option value='15'>+15%</option><option value='20'>+20%</option></select>
-<span id='incAuto' class='verifBox' style='min-width:90px;'>+0%</span>
+<span id='incAuto' class='verifBox' style='min-width:50px;'>+0%</span>
 </div>
 <div id='resultado'></div>
 <button id='btnCopiarWpp' onclick='copiarWpp()' disabled>COPIAR</button>
 <button id='btnCopiar' onclick='copiar()' disabled>COPIAR +ID</button>
 <script>
-const DB_FECHA='28-Dec-25';
+const DB_FECHA='29-Dec-25';
 var datos={
 "1SD": `1SD 
 Sáb 06/12 al Sáb 13/12
@@ -130,7 +130,7 @@ Sáb 14/02 al Sáb 21/02
 Disponible casa XX
 
 *Precio $760.000.-*
-*Precio usd 520.-*
+*Precio usd 510.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -140,7 +140,7 @@ Sáb 21/02 al Sáb 28/02
 Disponible casa XX
 
 *Precio $760.000.-*
-*Precio usd 520.-*
+*Precio usd 510.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -214,7 +214,7 @@ Sáb 17/01 al Sáb 31/01
 Disponible casa XX
 
 *Precio $1.794.000.-*
-*Precio usd 1.220.-*
+*Precio usd 1.210.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -254,7 +254,7 @@ Sáb 14/02 al Sáb 28/02
 Disponible casa XX
 
 *Precio $1.440.000.-*
-*Precio usd 980.-*
+*Precio usd 970.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -264,7 +264,7 @@ Sáb 21/02 al Sáb 07/03
 Disponible casa XX
 
 *Precio $1.395.000.-*
-*Precio usd950.-*
+*Precio usd940.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -274,7 +274,7 @@ Sáb 28/02 al Sáb 14/03
 Disponible casa XX
 
 *Precio $1.350.000.-*
-*Precio usd 920.-*
+*Precio usd 910.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -294,7 +294,7 @@ Sáb 14/03 al Sáb 28/03
 Disponible casa XX
 
 *Precio $1.280.000.-*
-*Precio usd 870.-*
+*Precio usd 860.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -514,5 +514,5 @@ setDefaults();
 Periodo <input id='v_per' style='width:70px;'> Personas <input id='v_pers' style='width:40px;'> Precio <input id='v_precio' style='width:70px;'> Fecha <input id='v_fecha' style='width:80px;'> Firma <input id='v_firma' style='width:80px;'>
 <br><br><button id='btnVerificar' onclick='verificar()' disabled>VERIFICAR</button><div id='v_resultado' class='verifBox'></div>
 </div>
-<div class='version'>Ver. v2.15 28-dic-25 / Database 28-Dec-25 18:08</div>
+<div class='version'>Ver. v2.16 28-dic-25 / Database 29-Dec-25 12:00</div>
 </div></body></html>
