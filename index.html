@@ -34,7 +34,7 @@ button:disabled{background:#555;color:#aaa;}
 </div>
 <div>
 par <select id='mat' onchange='buscar()'><option>0</option><option>1</option><option>2</option><option>3</option></select>
-may21<select id='may' onchange='buscar()'><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+may21 <select id='may' onchange='buscar()'><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
 abu <select id='abu' onchange='buscar()'><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
 </div>
 <div>
@@ -50,7 +50,7 @@ Ind <select id='inc' onchange='buscar()' style='width:80px;'><option value='-20'
 <button id='btnCopiarWpp' onclick='copiarWpp()' disabled>COPIAR</button>
 <button id='btnCopiar' onclick='copiar()' disabled>COPIAR +ID</button>
 <script>
-const DB_FECHA='29-Dec-25';
+const DB_FECHA='01/Nov/25';
 const navFields = ['selPeriodo','codigo','mat','may','abu','hma','hme','mon','inc'];
 var datos={
 "1SD": `1SD 
@@ -306,8 +306,12 @@ function navKeyHandler(e) {
   const idx = navFields.indexOf(e.target.id);
   if (idx === -1) return;
   e.preventDefault();
-  let nextIdx = e.key === 'ArrowRight' ? idx + 1 : idx - 1;
-  if (nextIdx < 0 || nextIdx >= navFields.length) return;
+  let nextIdx;
+  if (e.key === 'ArrowRight') {
+    nextIdx = (idx + 1) % navFields.length;
+  } else {
+    nextIdx = (idx - 1 + navFields.length) % navFields.length;
+  }
   const nextEl = document.getElementById(navFields[nextIdx]);
   if (nextEl) nextEl.focus();
 }
@@ -331,12 +335,14 @@ var bv=document.getElementById('btnVerificar'); if(bv) bv.disabled=true;
 btn.disabled=true;
 if(btnWpp) btnWpp.disabled=true;
 document.getElementById('cotizacion').textContent='';
+resultado.className = '';
 var c=codigo.value.toUpperCase();
 var suf='',base=c;
 if(c.endsWith('FD')||c.endsWith('FT')){suf=c.slice(-2);base=c.slice(0,-2);}
 var t=datos[base]||'';
 if(t && t.toLowerCase().includes(' no está disponible')){
   resultado.textContent = t;
+  resultado.className = 'error';
   btn.disabled = true;
   if(btnWpp) btnWpp.disabled = true;
   var bl=document.getElementById('btnCopiarLargo'); if(bl) bl.disabled=true;
@@ -376,9 +382,9 @@ if (m > 1) {
 }
 var incMay = 0;
 if (m === 0) {
-    if (y >= 3) incMay = 20;
+    if (y > 2) incMay = (y - 2) * 10;
 } else {
-    incMay = y * 10;
+    if (y > 0) incMay = y * 10;
 }
 var incTotal = incBase + incMay + incPar;
 var incAuto = incMay + incPar;
@@ -529,5 +535,5 @@ navFields.forEach(id => {
 Periodo <input id='v_per' style='width:70px;'> Personas <input id='v_pers' style='width:40px;'> Precio <input id='v_precio' style='width:70px;'> Fecha <input id='v_fecha' style='width:80px;'> Firma <input id='v_firma' style='width:80px;'>
 <br><br><button id='btnVerificar' onclick='verificar()' disabled>VERIFICAR</button><div id='v_resultado' class='verifBox'></div>
 </div>
-<div class='version'>Ver. v2.17 29-dic-25 / Database 29-Dec-25 12:41</div>
+<div class='version'>Ver. v2.17.2 29-dic-25 / Database 29-Dec-25 14:56</div>
 </div></body></html>
