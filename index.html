@@ -53,37 +53,6 @@ Ind <select id='inc' onchange='buscar()' style='width:80px;'><option value='-20'
 const DB_FECHA='01/Nov/25';
 const navFields = ['selPeriodo','codigo','mat','may','abu','hma','hme','mon','inc'];
 var datos={
-"1SD": `1SD 
-Sáb 06/12 al Sáb 13/12
-Disponible casa XX
-
-*Precio $760.000.-*
-*Precio usd 520.-*
-
-Reserva 20% aprox. saldo en mano al ingreso.
-
-https://www.PostaDelEste.com.ar/casa-XX`,
-"2SD": `2SD 
-Sáb 13/12 al Sáb 20/12
-Disponible casa XX
-
-*Precio $760.000.-*
-*Precio usd 520.-*
-
-Reserva 20% aprox. saldo en mano al ingreso.
-
-https://www.PostaDelEste.com.ar/casa-XX`,
-"3SD": `3SD 
-Sáb 20/12 al Sáb 27/12
-Disponible casa XX
-
-*Precio $850.000.-*
-*Precio usd 580.-*
-
-Reserva 20% aprox. saldo en mano al ingreso.
-
-https://www.PostaDelEste.com.ar/casa-XX`,
-"4SD": `4SD No está disponible`,
 "1SE": `1SE No está disponible`,
 "2SE": `2SE No está disponible`,
 "3SE": `3SE 
@@ -91,7 +60,7 @@ Sáb 17/01 al Sáb 24/01
 Disponible casa XX
 
 *Precio $940.000.-*
-*Precio usd 640.-*
+*Precio usd 630.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -101,7 +70,7 @@ Sáb 24/01 al Sáb 31/01
 Disponible casa XX
 
 *Precio $940.000.-*
-*Precio usd 640.-*
+*Precio usd 630.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -111,7 +80,7 @@ Sáb 31/01 al Sáb 07/02
 Disponible casa XX
 
 *Precio $850.000.-*
-*Precio usd 580.-*
+*Precio usd 570.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -121,7 +90,7 @@ Sáb 07/02 al Sáb 14/02
 Disponible casa XX
 
 *Precio $850.000.-*
-*Precio usd 580.-*
+*Precio usd 570.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -151,7 +120,7 @@ Sáb 28/02 al Sáb 07/03
 Disponible casa XX
 
 *Precio $760.000.-*
-*Precio usd 520.-*
+*Precio usd 510.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -161,7 +130,7 @@ Sáb 07/03 al Sáb 14/03
 Disponible casa XX
 
 *Precio $760.000.-*
-*Precio usd 520.-*
+*Precio usd 510.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -171,7 +140,7 @@ Sáb 14/03 al Sáb 21/03
 Disponible casa XX
 
 *Precio $760.000.-*
-*Precio usd 520.-*
+*Precio usd 510.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -181,33 +150,11 @@ Sáb 21/03 al Sáb 28/03
 Disponible casa XX
 
 *Precio $760.000.-*
-*Precio usd 520.-*
+*Precio usd 510.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
-"1QD": `1QD 
-Sáb 06/12 al Sáb 20/12
-Disponible casa XX
-
-*Precio $1.450.000.-*
-*Precio usd 980.-*
-
-Reserva 20% aprox. saldo en mano al ingreso.
-
-https://www.PostaDelEste.com.ar/casa-XX`,
-"1*QD": `1*Q 
-Sáb 13/12 al Sáb 27/12
-Disponible casa XX
-
-*Precio $1.530.000.-*
-*Precio usd1.040.-*
-
-Reserva 20% aprox. saldo en mano al ingreso.
-
-https://www.PostaDelEste.com.ar/casa-XX`,
-"2QD": `2QD  No está disponible`,
-"2*QD": `2*Q  No está disponible`,
 "1QE": `1QE  No está disponible`,
 "1*QE": `1*Q  No está disponible`,
 "2QE": `2QE 
@@ -215,7 +162,7 @@ Sáb 17/01 al Sáb 31/01
 Disponible casa XX
 
 *Precio $1.794.000.-*
-*Precio usd 1.220.-*
+*Precio usd 1.210.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -235,7 +182,7 @@ Sáb 31/01 al Sáb 14/02
 Disponible casa XX
 
 *Precio $1.610.000.-*
-*Precio usd 1.090.-*
+*Precio usd 1.080.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -255,7 +202,7 @@ Sáb 14/02 al Sáb 28/02
 Disponible casa XX
 
 *Precio $1.530.000.-*
-*Precio usd 1.040.-*
+*Precio usd 1.030.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -265,7 +212,7 @@ Sáb 21/02 al Sáb 07/03
 Disponible casa XX
 
 *Precio $1.485.000.-*
-*Precio usd1.010.-*
+*Precio usd1.000.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -275,7 +222,7 @@ Sáb 28/02 al Sáb 14/03
 Disponible casa XX
 
 *Precio $1.440.000.-*
-*Precio usd 980.-*
+*Precio usd 970.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -285,7 +232,7 @@ Sáb 07/03 al Sáb 21/03
 Disponible casa XX
 
 *Precio $1.440.000.-*
-*Precio usd980.-*
+*Precio usd970.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -295,7 +242,7 @@ Sáb 14/03 al Sáb 28/03
 Disponible casa XX
 
 *Precio $1.440.000.-*
-*Precio usd 980.-*
+*Precio usd 970.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -535,5 +482,5 @@ navFields.forEach(id => {
 Periodo <input id='v_per' style='width:70px;'> Personas <input id='v_pers' style='width:40px;'> Precio <input id='v_precio' style='width:70px;'> Fecha <input id='v_fecha' style='width:80px;'> Firma <input id='v_firma' style='width:80px;'>
 <br><br><button id='btnVerificar' onclick='verificar()' disabled>VERIFICAR</button><div id='v_resultado' class='verifBox'></div>
 </div>
-<div class='version'>Ver. v2.17.3 29-dic-25 / Database 29-Dec-25 20:09</div>
+<div class='version'>Ver. v2.17.3 29-dic-25 / Database 30-Dec-25 16:50</div>
 </div></body></html>
