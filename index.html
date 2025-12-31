@@ -60,7 +60,7 @@ Sáb 17/01 al Sáb 24/01
 Disponible casa XX
 
 *Precio $940.000.-*
-*Precio usd 630.-*
+*Precio usd 640.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -70,7 +70,7 @@ Sáb 24/01 al Sáb 31/01
 Disponible casa XX
 
 *Precio $940.000.-*
-*Precio usd 630.-*
+*Precio usd 640.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -182,7 +182,7 @@ Sáb 31/01 al Sáb 14/02
 Disponible casa XX
 
 *Precio $1.610.000.-*
-*Precio usd 1.080.-*
+*Precio usd 1.090.-*
 
 Reserva 20% aprox. saldo en mano al ingreso.
 
@@ -340,13 +340,13 @@ if (ia) {
     ia.textContent = '+' + incAuto + '%';
 }
 var precioBase=+(t.match(/\$[\d\.]+/)||[''])[0].replace(/\D/g,'');
-var precioARS=Math.round(precioBase*(1+incTotal/100));
+var precioARS = Math.round((precioBase * (1 + incTotal / 100)) / 10000) * 10000;
 t=t.replace(/\$[\d\.]+-/,'$'+precioARS.toLocaleString('es-AR')+'.-');
 var usdMatch=t.match(/usd\s*[\d\.]+/i);
 var precioUSD=0;
 if(usdMatch){
   var usdBase=+usdMatch[0].replace(/\D/g,'');
-  precioUSD=Math.round(usdBase*(1+incTotal/100));
+precioUSD = Math.round((usdBase * (1 + incTotal / 100)) / 10) * 10;
   t=t.replace(/usd\s*[\d\.\-]+/i,'usd '+precioUSD.toLocaleString('es-AR')+'.-');
 }
 resultado.textContent = t;
@@ -482,5 +482,5 @@ navFields.forEach(id => {
 Periodo <input id='v_per' style='width:70px;'> Personas <input id='v_pers' style='width:40px;'> Precio <input id='v_precio' style='width:70px;'> Fecha <input id='v_fecha' style='width:80px;'> Firma <input id='v_firma' style='width:80px;'>
 <br><br><button id='btnVerificar' onclick='verificar()' disabled>VERIFICAR</button><div id='v_resultado' class='verifBox'></div>
 </div>
-<div class='version'>Ver. v2.17.3 29-dic-25 / Database 30-Dec-25 16:50</div>
+<div class='version'>Ver. v2.17.3 29-dic-25 / Database 31-Dec-25 10:50</div>
 </div></body></html>
