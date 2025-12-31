@@ -419,6 +419,7 @@ v_per.value='';v_pers.value='';v_precio.value='';v_fecha.value='';v_firma.value=
 v_resultado.textContent='';v_resultado.className='verifBox';
 document.querySelectorAll('.firma').forEach(e=>e.remove());
 codigo.focus();
+inc.classList.remove('incNeg','incPos');
 }
 function generarLargo(textoCorto,firmaHTML){
 if(!textoCorto)return;
@@ -489,5 +490,5 @@ navFields.forEach(id => {
 Periodo <input id='v_per' style='width:70px;'> Personas <input id='v_pers' style='width:40px;'> Precio <input id='v_precio' style='width:70px;'> Fecha <input id='v_fecha' style='width:80px;'> Firma <input id='v_firma' style='width:80px;'>
 <br><br><button id='btnVerificar' onclick='verificar()' disabled>VERIFICAR</button><div id='v_resultado' class='verifBox'></div>
 </div>
-<div class='version'>Ver. v2.17.5 31-dic-25 / Database 31-Dec-25 18:44</div>
+<div class='version'>Ver. v2.17.5 31-dic-25 / Database 31-Dec-25 18:50</div>
 </div></body></html>
