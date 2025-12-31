@@ -20,9 +20,13 @@ button:disabled{background:#555;color:#aaa;}
 .verifBox{display:inline-flex;align-items:center;justify-content:center;height:48px;min-width:150px;border-radius:8px;font-size:16px;font-weight:bold;margin-left:10px;}
 .ok{background:#1f7a3a;color:#eaffea;}
 .bad{background:#8b1e1e;color:#ffecec;}
+.incNeg{color:#ff4c4c;font-weight:bold;}
+.incPos{color:#4caf50;font-weight:bold;}
 .verifBox.ok::before{content:'? ';font-weight:bold;}
 .verifBox.bad::before{content:'? ';font-weight:bold;}
 .copiado{background:#2e7d32!important;color:#eaffea;}
+select option[value^='-']{color:#ff4c4c;font-weight:bold;}
+select option[value^='+'],select option[value='5'],select option[value='10'],select option[value='15'],select option[value='20']{color:#4caf50;font-weight:bold;}
 </style></head><body><div id='box'>
 <h3>Cotización y Vacante de Períodos</h3>
 <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding-left:0px;">
@@ -53,8 +57,8 @@ Ind <select id='inc' onchange='buscar()' style='width:80px;'><option value='-20'
 const DB_FECHA='01/Nov/25';
 const navFields = ['selPeriodo','codigo','mat','may','abu','hma','hme','mon','inc'];
 var datos={
-"1SE": `1SE No está disponible`,
-"2SE": `2SE No está disponible`,
+"1SE": `1SE  No está disponible`,
+"2SE": `2SE  No está disponible`,
 "3SE": `3SE 
 Sáb 17/01 al Sáb 24/01
 Disponible casa XX
@@ -323,6 +327,9 @@ var fecha='Cotización '+dd+'-'+mmm;
 resultado.textContent=t;
 (async function(){
 var incBase = +inc.value || 0;
+inc.classList.remove('incNeg','incPos');
+if(incBase < 0) inc.classList.add('incNeg');
+else if(incBase > 0) inc.classList.add('incPos');
 var incPar = 0;
 if (m > 1) {
     incPar = (m - 1) * 20;
@@ -482,5 +489,5 @@ navFields.forEach(id => {
 Periodo <input id='v_per' style='width:70px;'> Personas <input id='v_pers' style='width:40px;'> Precio <input id='v_precio' style='width:70px;'> Fecha <input id='v_fecha' style='width:80px;'> Firma <input id='v_firma' style='width:80px;'>
 <br><br><button id='btnVerificar' onclick='verificar()' disabled>VERIFICAR</button><div id='v_resultado' class='verifBox'></div>
 </div>
-<div class='version'>Ver. v2.17.5 31-dic-25 / Database 31-Dec-25 12:07</div>
+<div class='version'>Ver. v2.17.5 31-dic-25 / Database 31-Dec-25 18:44</div>
 </div></body></html>
