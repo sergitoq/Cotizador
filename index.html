@@ -6,7 +6,6 @@
 <meta http-equiv='Pragma' content='no-cache'>
 <meta http-equiv='Expires' content='0'>
 <title>Cotizador Posta del Este</title>
-<meta http-equiv='refresh' content='300'>
 <style>
 body{font-family:Arial;background:#121212;color:#e6e6e6;padding:20px;}
 #box{background:#1d1d1d;padding:22px;border-radius:14px;}
@@ -26,7 +25,7 @@ button:disabled{background:#555;color:#aaa;}
 .verifBox.bad::before{content:'? ';font-weight:bold;}
 .copiado{background:#2e7d32!important;color:#eaffea;}
 select option[value^='-']{color:#ff4c4c;font-weight:bold;}
-select option[value^='+'],select option[value='5'],select option[value='10'],select option[value='15'],select option[value='20']{color:#4caf50;font-weight:bold;}
+select option[value^='+']{color:#4caf50;font-weight:bold;}
 .resBox{white-space:pre-wrap;background:#1a1a1a;border:1px solid #333;padding:16px;margin-top:15px;border-radius:10px;font-size:18px;}
 </style></head><body><div id='box'>
 <h3>Cotización y Vacante de Períodos</h3>
@@ -43,12 +42,12 @@ may21 <select id='may' onchange='buscar()'><option>0</option><option>1</option><
 abu <select id='abu' onchange='buscar()'><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
 </div>
 <div>
-hj12+ <select id='hma' onchange='buscar()'><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
-hj12- <select id='hme' onchange='buscar()'><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+hma12 <select id='hma' onchange='buscar()'><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+hme12 <select id='hme' onchange='buscar()'><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
 </div>
 <div>
 mon <select id='mon' onchange='buscar()' style='width:70px;'><option value='ars'>$</option><option value='usd'>usd</option></select>
-Ind <select id='inc' onchange='buscar()' style='width:80px;'><option value='-20'>-20%</option><option value='-15'>-15%</option><option value='-10'>-10%</option><option value='-5'>-5%</option><option value='0'>0%</option><option value='5'>+5%</option><option value='10'>+10%</option><option value='15'>+15%</option><option value='20'>+20%</option></select>
+Ind <select id='inc' onchange='buscar()' style='width:80px;'><option value='-20'>-20%</option><option value='-15'>-15%</option><option value='-10'>-10%</option><option value='-8'>-8%</option><option value='-5'>-5%</option><option value='-3'>-3%</option><option value='0'>0%</option><option value='+3'>+3%</option><option value='+5'>+5%</option><option value='+8'>+8%</option><option value='+10'>+10%</option><option value='+15'>+15%</option><option value='+20'>+20%</option></select>
 <span id='incAuto' class='verifBox' style='min-width:50px;'>+0%</span>
 </div>
 <div id='resultado'></div>
@@ -57,7 +56,7 @@ Ind <select id='inc' onchange='buscar()' style='width:80px;'><option value='-20'
 <hr style='margin:25px 0;border-color:#333;'>
 <h3>Cotización por Fechas</h3>
 <div style='display:flex;gap:10px;flex-wrap:wrap;align-items:center;'>
-Desde <input type='date' id='fDesde' onchange='cotizarFechas()'>
+Desde <input type='date' id='fDesde' onchange='cotizarFechas()'><span style='flex-basis:100%;'></span>
 Hasta <input type='date' id='fHasta' onchange='cotizarFechas()'>
 </div>
 <div style='display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:6px;'>
@@ -75,9 +74,9 @@ Sáb 24/01 al Sáb 31/01
 Disponible casa XX
 
 *Precio $940.000.-*
-*Precio usd 650.-*
+*Precio usd 640.-*
 
-Reserva 20% aprox. saldo en mano al ingreso.
+Reserva 30% aprox. saldo al ingresar.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "1SF": `1SF 
@@ -87,7 +86,7 @@ Disponible casa XX
 *Precio $850.000.-*
 *Precio usd 580.-*
 
-Reserva 20% aprox. saldo en mano al ingreso.
+Reserva 30% aprox. saldo al ingresar.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "2SF": `2SF 
@@ -97,7 +96,7 @@ Disponible casa XX
 *Precio $850.000.-*
 *Precio usd 580.-*
 
-Reserva 20% aprox. saldo en mano al ingreso.
+Reserva 30% aprox. saldo al ingresar.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "3SF": `3SF 
@@ -105,9 +104,9 @@ Sáb 14/02 al Sáb 21/02
 Disponible casa XX
 
 *Precio $810.000.-*
-*Precio usd 560.-*
+*Precio usd 550.-*
 
-Reserva 20% aprox. saldo en mano al ingreso.
+Reserva 30% aprox. saldo al ingresar.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "4SF": `4SF 
@@ -115,9 +114,9 @@ Sáb 21/02 al Sáb 28/02
 Disponible casa XX
 
 *Precio $810.000.-*
-*Precio usd 560.-*
+*Precio usd 550.-*
 
-Reserva 20% aprox. saldo en mano al ingreso.
+Reserva 30% aprox. saldo al ingresar.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "1SM": `1SM 
@@ -127,7 +126,7 @@ Disponible casa XX
 *Precio $740.000.-*
 *Precio usd 510.-*
 
-Reserva 20% aprox. saldo en mano al ingreso.
+Reserva 30% aprox. saldo al ingresar.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "2SM": `2SM 
@@ -137,7 +136,7 @@ Disponible casa XX
 *Precio $740.000.-*
 *Precio usd 510.-*
 
-Reserva 20% aprox. saldo en mano al ingreso.
+Reserva 30% aprox. saldo al ingresar.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "3SM": `3SM  No está disponible`,
@@ -147,9 +146,9 @@ Sáb 31/01 al Sáb 14/02
 Disponible casa XX
 
 *Precio $1.610.000.-*
-*Precio usd 1.110.-*
+*Precio usd 1.100.-*
 
-Reserva 20% aprox. saldo en mano al ingreso.
+Reserva 30% aprox. saldo al ingresar.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "1*QF": `1*Q 
@@ -159,7 +158,7 @@ Disponible casa XX
 *Precio $1.570.000.-*
 *Precio usd1.080.-*
 
-Reserva 20% aprox. saldo en mano al ingreso.
+Reserva 30% aprox. saldo al ingresar.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "2QF": `2QF 
@@ -169,7 +168,7 @@ Disponible casa XX
 *Precio $1.530.000.-*
 *Precio usd 1.050.-*
 
-Reserva 20% aprox. saldo en mano al ingreso.
+Reserva 30% aprox. saldo al ingresar.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "2*QF": `2*Q 
@@ -177,9 +176,9 @@ Sáb 21/02 al Sáb 07/03
 Disponible casa XX
 
 *Precio $1.465.000.-*
-*Precio usd1.010.-*
+*Precio usd1.000.-*
 
-Reserva 20% aprox. saldo en mano al ingreso.
+Reserva 30% aprox. saldo al ingresar.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "1QM": `1QM 
@@ -189,7 +188,7 @@ Disponible casa XX
 *Precio $1.400.000.-*
 *Precio usd 960.-*
 
-Reserva 20% aprox. saldo en mano al ingreso.
+Reserva 30% aprox. saldo al ingresar.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
 "1*QM": `1*Q  No está disponible`,
@@ -252,16 +251,19 @@ function cotizarFechas(){
   if(m)  txtPers+=m+'par+';
   if(y)  txtPers+=y+'may21+';
   if(a)  txtPers+=a+'abu+';
-  if(hy) txtPers+=hy+'hj(12+)+';
-  if(hn) txtPers+=hn+'hj(12-)+';
+  if(hy) txtPers+=hy+'hma12+';
+  if(hn) txtPers+=hn+'hme12+';
   if(txtPers) txtPers=txtPers.slice(0,-1)+' ('+pers+' pers)';
+  var txtDisponible='Disponible casa Fondo (ladrillos rojos)';
+  if(document.getElementById('resultado').textContent.includes('Frente')){
+    txtDisponible='Disponible casa Frente (amarilla)';
+  }
   out.textContent=
     txtPers+'\n\n' +
     fd+' al '+fh+'\n' +
-    'Disponible casa Fondo (ladrillos rojos)\n\n' +
-    '*Precio $'+total.toLocaleString('es-AR')+'.-*'+'\n\n' +
-    'Reserva 20% aprox. saldo en mano al ingreso.\n\n' +
-    'https://www.PostaDelEste.com.ar/casa-fondo';
+    txtDisponible+'\n\n' +
+    '*Precio $'+total.toLocaleString('es-AR')+'.-*\n\n' +
+    pie;
   btn.disabled=false;
 }
 async function generarHash(str){
@@ -306,7 +308,7 @@ return;}
 if(!t){resultado.textContent='';var bl=document.getElementById('btnCopiarLargo'); if(bl) bl.disabled=true; return;}
 t=(suf==='FT')?t.replace('casa XX','casa Frente (amarilla)').replace(/casa-xx/i,'casa-frente'):t.replace('casa XX','casa Fondo (ladrillos rojos)').replace(/casa-xx/i,'casa-fondo');
 var extra='';
-if(m)extra+=m+'par+';if(y)extra+=y+'may21+';if(a)extra+=a+'abu+';if(hy)extra+=hy+'hj(12+)+';if(hn)extra+=hn+'hj(12-)+';
+if(m)extra+=m+'par+';if(y)extra+=y+'may21+';if(a)extra+=a+'abu+';if(hy)extra+=hy+'hma12+';if(hn)extra+=hn+'hme12+';
 if(extra)extra=extra.slice(0,-1);
 if(extra) t = base + ' ' + extra + ' (' + p + ' pers)\n' + t.substring(base.length);
 var f=new Date();
@@ -502,5 +504,5 @@ function copiarFechas(){
 Periodo <input id='v_per' style='width:70px;'> Personas <input id='v_pers' style='width:40px;'> Precio <input id='v_precio' style='width:70px;'> Fecha <input id='v_fecha' style='width:80px;'> Firma <input id='v_firma' style='width:80px;'>
 <br><br><button id='btnVerificar' onclick='verificar()' disabled>VERIFICAR</button><div id='v_resultado' class='verifBox'></div>
 </div>
-<div class='version'>Ver. v2.17.6 1-Jan-26 / Database 18-Jan-26 14:13</div>
+<div class='version'>Ver. v2.18.5 18-Jan-26 / Database 19-Jan-26 16:13</div>
 </div></body></html>
