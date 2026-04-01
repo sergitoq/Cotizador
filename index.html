@@ -67,7 +67,7 @@ Cantidad de días <input id='cantDias' type='number' style='width:60px;' readonl
 <div id='resFechas' class='resBox'></div>
 <button id='btnCopiarFechas' onclick='copiarFechas()' disabled>COPIAR</button>
 <script>
-const DB_FECHA='31/Mar/26';
+const DB_FECHA='01/Apr/26';
 const navFields=['selPeriodo','codigo','mat','may','abu','hma','hme','mon','inc'];
 var datos={
 "1SD": `1SD 
@@ -426,6 +426,9 @@ function restoreState(){
   if(s.precioSemana) el('precioSemana').value=s.precioSemana;
   return true;
 }
+function clearState(){
+  try{localStorage.removeItem('cotizadorState');}catch(e){}
+}
 function syncHasta(){
   var d=el('fDesde').value;
   if(!d) return;
@@ -434,9 +437,6 @@ function syncHasta(){
   var mm=String(ultimo.getMonth()+1).padStart(2,'0');
   var dd=String(ultimo.getDate()).padStart(2,'0');
   el('fHasta').value=parts[0]+'-'+mm+'-'+dd;
-}
-function clearState(){
-  try{localStorage.removeItem('cotizadorState');}catch(e){}
 }
 function cargarPeriodos(){
   var s=el('selPeriodo');
@@ -597,6 +597,29 @@ function copiar(){
   b.textContent='COPIADO OK';b.classList.add('copiado');
   setTimeout(function(){b.textContent='COPIAR +ID';b.classList.remove('copiado');},1500);
 }
+function copiarWpp(){
+  var t=el('resultado').textContent.trim();
+  if(!t) return;
+  navigator.clipboard.writeText(t);
+  var b=el('btnCopiarWpp');if(!b) return;
+  b.textContent='COPIADO OK';b.classList.add('copiado');
+  setTimeout(function(){b.textContent='COPIAR';b.classList.remove('copiado');},1500);
+}
+function copiarLargo(){
+  if(el('cotizacion').textContent.trim()==='') return;
+  navigator.clipboard.writeText(el('cotizacion').textContent);
+  var b=el('btnCopiarLargo');if(!b) return;
+  b.textContent='COPIADO OK';b.classList.add('copiado');
+  setTimeout(function(){b.textContent='COPIAR Extendida';b.classList.remove('copiado');},1500);
+}
+function copiarFechas(){
+  const t=el('resFechas').textContent.trim();
+  if(!t) return;
+  navigator.clipboard.writeText(t);
+  const b=el('btnCopiarFechas');
+  b.textContent='COPIADO OK';b.classList.add('copiado');
+  setTimeout(function(){b.textContent='COPIAR';b.classList.remove('copiado');},1500);
+}
 function setDefaults(){
   el('mat').value=0;el('may').value=0;el('abu').value=0;
   el('hma').value=0;el('hme').value=0;el('inc').value=0;
@@ -652,40 +675,24 @@ async function verificar(){
     vr.textContent='Cotización alterada';vr.className='verifBox bad';
   }
 }
-function copiarWpp(){
-  var t=el('resultado').textContent.trim();
-  if(!t) return;
-  navigator.clipboard.writeText(t);
-  var b=el('btnCopiarWpp');if(!b) return;
-  b.textContent='COPIADO OK';b.classList.add('copiado');
-  setTimeout(function(){b.textContent='COPIAR';b.classList.remove('copiado');},1500);
-}
-function copiarLargo(){
-  if(el('cotizacion').textContent.trim()==='') return;
-  navigator.clipboard.writeText(el('cotizacion').textContent);
-  var b=el('btnCopiarLargo');if(!b) return;
-  b.textContent='COPIADO OK';b.classList.add('copiado');
-  setTimeout(function(){b.textContent='COPIAR Extendida';b.classList.remove('copiado');},1500);
-}
-function copiarFechas(){
-  const t=el('resFechas').textContent.trim();
-  if(!t) return;
-  navigator.clipboard.writeText(t);
-  const b=el('btnCopiarFechas');
-  b.textContent='COPIADO OK';b.classList.add('copiado');
-  setTimeout(function(){b.textContent='COPIAR';b.classList.remove('copiado');},1500);
-}
 window.addEventListener('load',function(){
   cargarPeriodos();
-  var restored=restoreState();
-  if(!restored) setDefaults();
+  var esRecarga=false;
+  try{esRecarga=!!sessionStorage.getItem('tabActiva');}catch(e){}
+  try{sessionStorage.setItem('tabActiva','1');}catch(e){}
+  if(!esRecarga){
+    limpiar();
+  } else {
+    var restored=restoreState();
+    if(!restored) setDefaults();
+    if(restored){
+      if(el('codigo').value) buscar();
+      if(el('fDesde').value&&el('fHasta').value) cotizarFechas();
+    }
+  }
   navFields.forEach(function(id){
     var e=el(id);if(e) e.addEventListener('keydown',navKeyHandler);
   });
-  if(restored){
-    if(el('codigo').value) buscar();
-    if(el('fDesde').value&&el('fHasta').value) cotizarFechas();
-  }
 });
 </script>
 <h3 style="margin-top:30px;">Cotización Extendida</h3>
@@ -696,5 +703,5 @@ window.addEventListener('load',function(){
 Periodo <input id='v_per' style='width:70px;'> Personas <input id='v_pers' style='width:40px;'> Precio <input id='v_precio' style='width:70px;'> Fecha <input id='v_fecha' style='width:80px;'> Firma <input id='v_firma' style='width:80px;'>
 <br><br><button id='btnVerificar' onclick='verificar()' disabled>VERIFICAR</button><div id='v_resultado' class='verifBox'></div>
 </div>
-<div class='version'>Ver. v2.31 31-Mar-26 / Database 31-Mar-26 15:35</div>
+<div class='version'>Ver. v2.32 01-Apr-26 / Database 01-Apr-26 09:02</div>
 </div></body></html>
