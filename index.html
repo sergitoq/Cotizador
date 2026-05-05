@@ -67,15 +67,15 @@ Cantidad de días <input id='cantDias' type='number' style='width:60px;' readonl
 <div id='resFechas' class='resBox'></div>
 <button id='btnCopiarFechas' onclick='copiarFechas()' disabled>COPIAR</button>
 <script>
-const DB_FECHA='03/May/26';
+const DB_FECHA='05/May/26';
 const navFields=['selPeriodo','codigo','mat','may','abu','hma','hme','mon','inc'];
 var datos={
 "1SD": `1SD 
 Sáb 05/12 al Sáb 12/12/26
 Disponible casa XX
 
-*Precio $972.000.-*
-*Precio usd 690.-*
+*Precio $953.000.-*
+*Precio usd 670.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -84,8 +84,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 12/12 al Sáb 19/12/26
 Disponible casa XX
 
-*Precio $972.000.-*
-*Precio usd 690.-*
+*Precio $953.000.-*
+*Precio usd 670.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -94,8 +94,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 19/12 al Sáb 26/12/26
 Disponible casa XX
 
-*Precio $1.080.000.-*
-*Precio usd 760.-*
+*Precio $1.059.000.-*
+*Precio usd 750.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -104,8 +104,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 26/12 al Sáb 02/01/27
 Disponible casa XX
 
-*Precio $1.080.000.-*
-*Precio usd 760.-*
+*Precio $1.059.000.-*
+*Precio usd 750.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -114,8 +114,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 02/01 al Sáb 09/01/27
 Disponible casa XX
 
-*Precio $1.161.000.-*
-*Precio usd 820.-*
+*Precio $1.139.000.-*
+*Precio usd 800.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -124,8 +124,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 09/01 al Sáb 16/01/27
 Disponible casa XX
 
-*Precio $1.161.000.-*
-*Precio usd 820.-*
+*Precio $1.139.000.-*
+*Precio usd 800.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -134,8 +134,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 16/01 al Sáb 23/01/27
 Disponible casa XX
 
-*Precio $1.161.000.-*
-*Precio usd 820.-*
+*Precio $1.139.000.-*
+*Precio usd 800.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -144,8 +144,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 23/01 al Sáb 30/01/27
 Disponible casa XX
 
-*Precio $1.161.000.-*
-*Precio usd 820.-*
+*Precio $1.139.000.-*
+*Precio usd 800.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -154,8 +154,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 30/01 al Sáb 06/02/27
 Disponible casa XX
 
-*Precio $1.080.000.-*
-*Precio usd 760.-*
+*Precio $1.059.000.-*
+*Precio usd 750.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -164,8 +164,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 06/02 al Sáb 13/02/27
 Disponible casa XX
 
-*Precio $1.080.000.-*
-*Precio usd 760.-*
+*Precio $1.059.000.-*
+*Precio usd 750.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -174,8 +174,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 13/02 al Sáb 20/02/27
 Disponible casa XX
 
-*Precio $1.015.000.-*
-*Precio usd 720.-*
+*Precio $995.000.-*
+*Precio usd 700.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -184,8 +184,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 20/02 al Sáb 27/02/27
 Disponible casa XX
 
-*Precio $1.015.000.-*
-*Precio usd 720.-*
+*Precio $995.000.-*
+*Precio usd 700.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -194,8 +194,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 27/02 al Sáb 06/03/27
 Disponible casa XX
 
-*Precio $941.000.-*
-*Precio usd 670.-*
+*Precio $922.000.-*
+*Precio usd 650.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -204,8 +204,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 06/03 al Sáb 13/03/27
 Disponible casa XX
 
-*Precio $941.000.-*
-*Precio usd 670.-*
+*Precio $922.000.-*
+*Precio usd 650.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -214,8 +214,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 13/03 al Sáb 20/03/27
 Disponible casa XX
 
-*Precio $941.000.-*
-*Precio usd 670.-*
+*Precio $922.000.-*
+*Precio usd 650.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -224,8 +224,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 20/03 al Sáb 27/03/27
 Disponible casa XX
 
-*Precio $941.000.-*
-*Precio usd 670.-*
+*Precio $922.000.-*
+*Precio usd 650.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -234,8 +234,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 05/12 al Sáb 19/12/26
 Disponible casa XX
 
-*Precio $1.905.000.-*
-*Precio usd 1.350.-*
+*Precio $1.868.000.-*
+*Precio usd 1.320.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -244,8 +244,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 12/12 al Sáb 26/12/26
 Disponible casa XX
 
-*Precio $2.011.000.-*
-*Precio usd1.420.-*
+*Precio $1.972.000.-*
+*Precio usd1.390.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -254,8 +254,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 19/12 al Sáb 02/01/27
 Disponible casa XX
 
-*Precio $2.117.000.-*
-*Precio usd 1.500.-*
+*Precio $2.076.000.-*
+*Precio usd 1.460.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -264,8 +264,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 26/12 al Sáb 09/01/27
 Disponible casa XX
 
-*Precio $2.196.500.-*
-*Precio usd1.550.-*
+*Precio $2.154.000.-*
+*Precio usd1.520.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -274,8 +274,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 02/01 al Sáb 16/01/27
 Disponible casa XX
 
-*Precio $2.276.000.-*
-*Precio usd 1.610.-*
+*Precio $2.232.000.-*
+*Precio usd 1.570.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -284,8 +284,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 09/01 al Sáb 23/01/27
 Disponible casa XX
 
-*Precio $2.276.000.-*
-*Precio usd1.610.-*
+*Precio $2.232.000.-*
+*Precio usd1.570.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -294,8 +294,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 16/01 al Sáb 30/01/27
 Disponible casa XX
 
-*Precio $2.276.000.-*
-*Precio usd 1.610.-*
+*Precio $2.232.000.-*
+*Precio usd 1.570.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -304,8 +304,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 23/01 al Sáb 06/02/27
 Disponible casa XX
 
-*Precio $2.196.500.-*
-*Precio usd1.550.-*
+*Precio $2.154.000.-*
+*Precio usd1.520.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -314,8 +314,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 30/01 al Sáb 13/02/27
 Disponible casa XX
 
-*Precio $2.117.000.-*
-*Precio usd 1.500.-*
+*Precio $2.076.000.-*
+*Precio usd 1.460.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -324,8 +324,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 06/02 al Sáb 20/02/27
 Disponible casa XX
 
-*Precio $2.053.500.-*
-*Precio usd1.450.-*
+*Precio $2.013.500.-*
+*Precio usd1.420.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -334,8 +334,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 13/02 al Sáb 27/02/27
 Disponible casa XX
 
-*Precio $1.990.000.-*
-*Precio usd 1.410.-*
+*Precio $1.951.000.-*
+*Precio usd 1.370.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -344,8 +344,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 20/02 al Sáb 06/03/27
 Disponible casa XX
 
-*Precio $1.917.000.-*
-*Precio usd1.350.-*
+*Precio $1.879.500.-*
+*Precio usd1.320.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -354,8 +354,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 27/02 al Sáb 13/03/27
 Disponible casa XX
 
-*Precio $1.844.000.-*
-*Precio usd 1.300.-*
+*Precio $1.808.000.-*
+*Precio usd 1.270.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -364,8 +364,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 06/03 al Sáb 20/03/27
 Disponible casa XX
 
-*Precio $1.844.000.-*
-*Precio usd1.300.-*
+*Precio $1.808.000.-*
+*Precio usd1.270.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -374,8 +374,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 13/03 al Sáb 27/03/27
 Disponible casa XX
 
-*Precio $1.844.000.-*
-*Precio usd 1.300.-*
+*Precio $1.808.000.-*
+*Precio usd 1.270.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -388,30 +388,30 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 10/10 al Lun 12/10/26
 Disponible casa XX
 
-*Precio $338.000.-*
-*Precio usd 239.-*
+*Precio $330.000.-*
+*Precio usd 232.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
-"Soberania Nac": `Soberania Nac  No está disponible`,
-"Inmaculada Concep": `Inmaculada Concep  No está disponible`,
-"Noche Buena / Navidad": `Noche Buena / Navidad 
-Jue 24/12 al Dom 27/12/26
+"Soberania Nac": `Soberania Nac 
+Sáb 21/11 al Lun 23/11/26
 Disponible casa XX
 
-*Precio $581.000.-*
-*Precio usd 411.-*
+*Precio $330.000.-*
+*Precio usd 232.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
 https://www.PostaDelEste.com.ar/casa-XX`,
+"Inmaculada Concep": `Inmaculada Concep  No está disponible`,
+"Noche Buena / Navidad": `Noche Buena / Navidad  No está disponible`,
 "Fin de año / Año Nuevo": `Fin de año / Año Nuevo 
 Jue 31/12 al Dom 03/01/27
 Disponible casa XX
 
-*Precio $581.000.-*
-*Precio usd 411.-*
+*Precio $571.000.-*
+*Precio usd 402.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -420,8 +420,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Sáb 06/02 al Mar 09/02/27
 Disponible casa XX
 
-*Precio $581.000.-*
-*Precio usd 411.-*
+*Precio $571.000.-*
+*Precio usd 402.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -430,8 +430,8 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Mie 24/03 al Dom 28/03/27
 Disponible casa XX
 
-*Precio $608.000.-*
-*Precio usd .-*
+*Precio $594.000.-*
+*Precio usd 418.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -440,7 +440,7 @@ https://www.PostaDelEste.com.ar/casa-XX`,
 Vie 02/04 al Dom 04/04/27
 Disponible casa XX
 
-*Precio $338.000.-*
+*Precio $330.000.-*
 *Precio usd .-*
 
 Reserva 30% aprox. saldo al ingresar.
@@ -790,5 +790,5 @@ window.addEventListener('load',function(){
 Periodo <input id='v_per' style='width:70px;'> Personas <input id='v_pers' style='width:40px;'> Precio <input id='v_precio' style='width:70px;'> Fecha <input id='v_fecha' style='width:80px;'> Firma <input id='v_firma' style='width:80px;'>
 <br><br><button id='btnVerificar' onclick='verificar()' disabled>VERIFICAR</button><div id='v_resultado' class='verifBox'></div>
 </div>
-<div class='version'>Ver. v3.00 01-Apr-26 / Database 03-May-26 17:38</div>
+<div class='version'>Ver. v3.00 01-Apr-26 / Database 05-May-26 15:01</div>
 </div></body></html>
