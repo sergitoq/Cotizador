@@ -24,6 +24,8 @@ button:disabled{background:#555;color:#aaa;}
 .verifBox.ok::before{content:'\2713 ';font-weight:bold;}
 .verifBox.bad::before{content:'\2717 ';font-weight:bold;}
 .copiado{background:#2e7d32!important;color:#eaffea;}
+.btnWpp{background:#25d366!important;color:#fff;}
+.btnWpp:disabled{background:#555!important;color:#aaa;}
 select option[value^='-']{color:#ff4c4c;font-weight:bold;}
 select option[value^='+']{color:#4caf50;font-weight:bold;}
 .resBox{white-space:pre-wrap;background:#1a1a1a;border:1px solid #333;padding:16px;margin-top:15px;border-radius:10px;font-size:18px;}
@@ -53,7 +55,8 @@ Ind <select id='inc' onchange='buscar();saveState();' style='width:80px;'><optio
 </div>
 <div id='resultado'></div>
 <button id='btnCopiarWpp' onclick='copiarWpp()' disabled>COPIAR</button>
-<button id='btnCopiar' onclick='copiar()' disabled>COPIAR +ID</button>
+<button id='btnEnviarWpp' class='btnWpp' onclick='enviarWpp()' disabled>WPP</button>
+<button id='btnCopiar' onclick='copiar()' disabled>COPI+ID</button>
 <hr style='margin:25px 0;border-color:#333;'>
 <h3>Cotización por Fechas</h3>
 <div style='display:flex;gap:10px;flex-wrap:wrap;align-items:center;'>
@@ -66,8 +69,9 @@ Cantidad de días <input id='cantDias' type='number' style='width:60px;' readonl
 </div>
 <div id='resFechas' class='resBox'></div>
 <button id='btnCopiarFechas' onclick='copiarFechas()' disabled>COPIAR</button>
+<button id='btnEnviarWppFechas' class='btnWpp' onclick='enviarWppFechas()' disabled>WPP</button>
 <script>
-const DB_FECHA='05/May/26';
+const DB_FECHA='06/May/26';
 const navFields=['selPeriodo','codigo','mat','may','abu','hma','hme','mon','inc'];
 var datos={
 "1SD": `1SD 
@@ -75,7 +79,7 @@ Sáb 05/12 al Sáb 12/12/26
 Disponible casa XX
 
 *Precio $953.000.-*
-*Precio usd 670.-*
+*Precio usd 680.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -85,7 +89,7 @@ Sáb 12/12 al Sáb 19/12/26
 Disponible casa XX
 
 *Precio $953.000.-*
-*Precio usd 670.-*
+*Precio usd 680.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -115,7 +119,7 @@ Sáb 02/01 al Sáb 09/01/27
 Disponible casa XX
 
 *Precio $1.139.000.-*
-*Precio usd 800.-*
+*Precio usd 810.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -125,7 +129,7 @@ Sáb 09/01 al Sáb 16/01/27
 Disponible casa XX
 
 *Precio $1.139.000.-*
-*Precio usd 800.-*
+*Precio usd 810.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -135,7 +139,7 @@ Sáb 16/01 al Sáb 23/01/27
 Disponible casa XX
 
 *Precio $1.139.000.-*
-*Precio usd 800.-*
+*Precio usd 810.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -145,7 +149,7 @@ Sáb 23/01 al Sáb 30/01/27
 Disponible casa XX
 
 *Precio $1.139.000.-*
-*Precio usd 800.-*
+*Precio usd 810.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -175,7 +179,7 @@ Sáb 13/02 al Sáb 20/02/27
 Disponible casa XX
 
 *Precio $995.000.-*
-*Precio usd 700.-*
+*Precio usd 710.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -185,7 +189,7 @@ Sáb 20/02 al Sáb 27/02/27
 Disponible casa XX
 
 *Precio $995.000.-*
-*Precio usd 700.-*
+*Precio usd 710.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -245,7 +249,7 @@ Sáb 12/12 al Sáb 26/12/26
 Disponible casa XX
 
 *Precio $1.972.000.-*
-*Precio usd1.390.-*
+*Precio usd1.400.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -255,7 +259,7 @@ Sáb 19/12 al Sáb 02/01/27
 Disponible casa XX
 
 *Precio $2.076.000.-*
-*Precio usd 1.460.-*
+*Precio usd 1.470.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -265,7 +269,7 @@ Sáb 26/12 al Sáb 09/01/27
 Disponible casa XX
 
 *Precio $2.154.000.-*
-*Precio usd1.520.-*
+*Precio usd1.530.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -275,7 +279,7 @@ Sáb 02/01 al Sáb 16/01/27
 Disponible casa XX
 
 *Precio $2.232.000.-*
-*Precio usd 1.570.-*
+*Precio usd 1.580.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -285,7 +289,7 @@ Sáb 09/01 al Sáb 23/01/27
 Disponible casa XX
 
 *Precio $2.232.000.-*
-*Precio usd1.570.-*
+*Precio usd1.580.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -295,7 +299,7 @@ Sáb 16/01 al Sáb 30/01/27
 Disponible casa XX
 
 *Precio $2.232.000.-*
-*Precio usd 1.570.-*
+*Precio usd 1.580.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -305,7 +309,7 @@ Sáb 23/01 al Sáb 06/02/27
 Disponible casa XX
 
 *Precio $2.154.000.-*
-*Precio usd1.520.-*
+*Precio usd1.530.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -315,7 +319,7 @@ Sáb 30/01 al Sáb 13/02/27
 Disponible casa XX
 
 *Precio $2.076.000.-*
-*Precio usd 1.460.-*
+*Precio usd 1.470.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -325,7 +329,7 @@ Sáb 06/02 al Sáb 20/02/27
 Disponible casa XX
 
 *Precio $2.013.500.-*
-*Precio usd1.420.-*
+*Precio usd1.430.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -335,7 +339,7 @@ Sáb 13/02 al Sáb 27/02/27
 Disponible casa XX
 
 *Precio $1.951.000.-*
-*Precio usd 1.370.-*
+*Precio usd 1.380.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -345,7 +349,7 @@ Sáb 20/02 al Sáb 06/03/27
 Disponible casa XX
 
 *Precio $1.879.500.-*
-*Precio usd1.320.-*
+*Precio usd1.330.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -355,7 +359,7 @@ Sáb 27/02 al Sáb 13/03/27
 Disponible casa XX
 
 *Precio $1.808.000.-*
-*Precio usd 1.270.-*
+*Precio usd 1.280.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -365,7 +369,7 @@ Sáb 06/03 al Sáb 20/03/27
 Disponible casa XX
 
 *Precio $1.808.000.-*
-*Precio usd1.270.-*
+*Precio usd1.280.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -375,7 +379,7 @@ Sáb 13/03 al Sáb 27/03/27
 Disponible casa XX
 
 *Precio $1.808.000.-*
-*Precio usd 1.270.-*
+*Precio usd 1.280.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -389,7 +393,7 @@ Sáb 10/10 al Lun 12/10/26
 Disponible casa XX
 
 *Precio $330.000.-*
-*Precio usd 232.-*
+*Precio usd 234.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -399,7 +403,7 @@ Sáb 21/11 al Lun 23/11/26
 Disponible casa XX
 
 *Precio $330.000.-*
-*Precio usd 232.-*
+*Precio usd 234.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -411,7 +415,7 @@ Jue 31/12 al Dom 03/01/27
 Disponible casa XX
 
 *Precio $571.000.-*
-*Precio usd 402.-*
+*Precio usd 405.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -421,7 +425,7 @@ Sáb 06/02 al Mar 09/02/27
 Disponible casa XX
 
 *Precio $571.000.-*
-*Precio usd 402.-*
+*Precio usd 405.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -431,7 +435,7 @@ Mie 24/03 al Dom 28/03/27
 Disponible casa XX
 
 *Precio $594.000.-*
-*Precio usd 418.-*
+*Precio usd 421.-*
 
 Reserva 30% aprox. saldo al ingresar.
 
@@ -519,15 +523,16 @@ function cotizarFechas(){
   const ps=+el('precioSemana').value;
   const out=el('resFechas');
   const btn=el('btnCopiarFechas');
-  if(!d1||!d2){out.textContent='';btn.disabled=true;return;}
-  if(!ps){out.textContent='Ingresá el precio semanal.';btn.disabled=true;return;}
+  const bewf=el('btnEnviarWppFechas');
+  if(!d1||!d2){out.textContent='';btn.disabled=true;if(bewf) bewf.disabled=true;return;}
+  if(!ps){out.textContent='Ingresá el precio semanal.';btn.disabled=true;if(bewf) bewf.disabled=true;return;}
   const partsD=d1.split('-').map(Number);
   const partsH=d2.split('-').map(Number);
   const fD=new Date(partsD[0],partsD[1]-1,partsD[2]);
   const fH=new Date(partsH[0],partsH[1]-1,partsH[2]);
   const dias=Math.round((fH-fD)/(1000*60*60*24));
   var cd=el('cantDias');if(cd) cd.value=dias;
-  if(dias<=0){out.innerHTML='<span class="error">Fechas inválidas</span>';btn.disabled=true;return;}
+  if(dias<=0){out.innerHTML='<span class="error">Fechas inválidas</span>';btn.disabled=true;if(bewf) bewf.disabled=true;return;}
   const total=Math.round((ps/7*dias)/1000)*1000;
   const sem=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
   const fd=sem[fD.getDay()]+' '+String(fD.getDate()).padStart(2,'0')+'/'+String(fD.getMonth()+1).padStart(2,'0');
@@ -552,6 +557,7 @@ function cotizarFechas(){
     (txtPers?txtPers+'\n\n':'')+fd+' al '+fh+'\n'+txtDisponible+'\n\n'+
     '*Precio $'+total.toLocaleString('es-AR')+'.-*'+(pie?'\n\n'+pie:'');
   btn.disabled=false;
+  if(bewf) bewf.disabled=false;
 }
 async function generarHash(str){
   const enc=new TextEncoder().encode(str);
@@ -561,10 +567,12 @@ async function generarHash(str){
 function buscar(){
   var btn=el('btnCopiar');
   var btnWpp=el('btnCopiarWpp');
+  var bew=el('btnEnviarWpp');
   var bv=el('btnVerificar');if(bv) bv.disabled=true;
   var bl=el('btnCopiarLargo');if(bl) bl.disabled=true;
   btn.disabled=true;
   if(btnWpp) btnWpp.disabled=true;
+  if(bew) bew.disabled=true;
   el('cotizacion').textContent='';
   var resultado=el('resultado');
   resultado.className='';
@@ -576,7 +584,7 @@ function buscar(){
   if(!t){var baseUp=base.toUpperCase();var found=Object.keys(datos).find(function(k){return k.toUpperCase()===baseUp;});if(found){base=found;t=datos[found]||'';}}
   if(t&&t.toLowerCase().includes(' no está disponible')){
     resultado.textContent=t;resultado.className='error';
-    btn.disabled=true;if(btnWpp) btnWpp.disabled=true;
+    btn.disabled=true;if(btnWpp) btnWpp.disabled=true;if(bew) bew.disabled=true;
     if(bl) bl.disabled=true;if(bv) bv.disabled=true;
     return;
   }
@@ -670,6 +678,7 @@ function buscar(){
     resultado.insertAdjacentHTML('afterend',firmaHTML);
     btn.disabled=false;
     if(btnWpp) btnWpp.disabled=false;
+    if(bew) bew.disabled=false;
     generarLargo(resultado.textContent);
     if(bl) bl.disabled=false;
     saveState();
@@ -682,7 +691,7 @@ function copiar(){
   if(firma) texto+='\n\n'+firma.textContent;
   navigator.clipboard.writeText(texto);
   b.textContent='COPIADO OK';b.classList.add('copiado');
-  setTimeout(function(){b.textContent='COPIAR +ID';b.classList.remove('copiado');},1500);
+  setTimeout(function(){b.textContent='COPI+ID';b.classList.remove('copiado');},1500);
 }
 function copiarWpp(){
   var t=el('resultado').textContent.trim();
@@ -691,6 +700,11 @@ function copiarWpp(){
   var b=el('btnCopiarWpp');if(!b) return;
   b.textContent='COPIADO OK';b.classList.add('copiado');
   setTimeout(function(){b.textContent='COPIAR';b.classList.remove('copiado');},1500);
+}
+function enviarWpp(){
+  var t=el('resultado').textContent.trim();
+  if(!t) return;
+  window.open('https://wa.me/?text='+encodeURIComponent(t),'_blank');
 }
 function copiarLargo(){
   if(el('cotizacion').textContent.trim()==='') return;
@@ -707,6 +721,11 @@ function copiarFechas(){
   b.textContent='COPIADO OK';b.classList.add('copiado');
   setTimeout(function(){b.textContent='COPIAR';b.classList.remove('copiado');},1500);
 }
+function enviarWppFechas(){
+  var t=el('resFechas').textContent.trim();
+  if(!t) return;
+  window.open('https://wa.me/?text='+encodeURIComponent(t),'_blank');
+}
 function setDefaults(){
   el('mat').value=1;el('may').value=0;el('abu').value=0;
   el('hma').value=0;el('hme').value=0;el('inc').value=0;
@@ -719,6 +738,7 @@ function limpiar(){
   el('cotizacion').textContent='';
   el('btnCopiar').disabled=true;
   var bw=el('btnCopiarWpp');if(bw) bw.disabled=true;
+  var bew=el('btnEnviarWpp');if(bew) bew.disabled=true;
   var bl=el('btnCopiarLargo');if(bl) bl.disabled=true;
   var bv=el('btnVerificar');if(bv) bv.disabled=true;
   el('v_per').value='';el('v_pers').value='';el('v_precio').value='';
@@ -728,6 +748,7 @@ function limpiar(){
   el('resFechas').textContent='';
   el('precioSemana').value='';
   var bf=el('btnCopiarFechas');if(bf) bf.disabled=true;
+  var bewf=el('btnEnviarWppFechas');if(bewf) bewf.disabled=true;
   el('fDesde').value='';el('fHasta').value='';
   el('cantDias').value='';
   el('inc').classList.remove('incNeg','incPos');
@@ -790,5 +811,5 @@ window.addEventListener('load',function(){
 Periodo <input id='v_per' style='width:70px;'> Personas <input id='v_pers' style='width:40px;'> Precio <input id='v_precio' style='width:70px;'> Fecha <input id='v_fecha' style='width:80px;'> Firma <input id='v_firma' style='width:80px;'>
 <br><br><button id='btnVerificar' onclick='verificar()' disabled>VERIFICAR</button><div id='v_resultado' class='verifBox'></div>
 </div>
-<div class='version'>Ver. v3.00 01-Apr-26 / Database 05-May-26 16:15</div>
+<div class='version'>Ver. v3.01 06-May-26 / Database 06-May-26 16:07</div>
 </div></body></html>
