@@ -681,6 +681,7 @@ function buscar(){
     if(bew) bew.disabled=false;
     generarLargo(resultado.textContent);
     if(bl) bl.disabled=false;
+    var bel=el('btnEnviarWppLargo');if(bel) bel.disabled=false;
     saveState();
   })();
 }
@@ -713,6 +714,11 @@ function copiarLargo(){
   b.textContent='COPIADO OK';b.classList.add('copiado');
   setTimeout(function(){b.textContent='COPIAR Extendida';b.classList.remove('copiado');},1500);
 }
+function enviarWppLargo(){
+  var t=el('cotizacion').textContent.trim();
+  if(!t) return;
+  window.open('https://wa.me/?text='+encodeURIComponent(t),'_blank');
+}
 function copiarFechas(){
   const t=el('resFechas').textContent.trim();
   if(!t) return;
@@ -740,6 +746,7 @@ function limpiar(){
   var bw=el('btnCopiarWpp');if(bw) bw.disabled=true;
   var bew=el('btnEnviarWpp');if(bew) bew.disabled=true;
   var bl=el('btnCopiarLargo');if(bl) bl.disabled=true;
+  var bel=el('btnEnviarWppLargo');if(bel) bel.disabled=true;
   var bv=el('btnVerificar');if(bv) bv.disabled=true;
   el('v_per').value='';el('v_pers').value='';el('v_precio').value='';
   el('v_fecha').value='';el('v_firma').value='';
@@ -806,10 +813,11 @@ window.addEventListener('load',function(){
 <h3 style="margin-top:30px;">Cotización Extendida</h3>
 <div id='cotizacion' style='margin-bottom:25px;'></div>
 <button id='btnCopiarLargo' onclick='copiarLargo()' disabled>COPIAR Extendida</button>
+<button id='btnEnviarWppLargo' class='btnWpp' onclick='enviarWppLargo()' disabled>WPP</button>
 <h3 style="margin-top:30px;">Verificar cotización</h3>
 <div style='font-size:14px;color:#ccc;'>
 Periodo <input id='v_per' style='width:70px;'> Personas <input id='v_pers' style='width:40px;'> Precio <input id='v_precio' style='width:70px;'> Fecha <input id='v_fecha' style='width:80px;'> Firma <input id='v_firma' style='width:80px;'>
 <br><br><button id='btnVerificar' onclick='verificar()' disabled>VERIFICAR</button><div id='v_resultado' class='verifBox'></div>
 </div>
-<div class='version'>Ver. v3.01 06-May-26 / Database 06-May-26 16:07</div>
+<div class='version'>Ver. v3.02 06-May-26 / Database 06-May-26 16:15</div>
 </div></body></html>
