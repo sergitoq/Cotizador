@@ -56,7 +56,7 @@ Ind <select id='inc' onchange='buscar();saveState();' style='width:80px;'><optio
 <div id='resultado'></div>
 <button id='btnCopiarWpp' onclick='copiarWpp()' disabled>COPIAR</button>
 <button id='btnEnviarWpp' class='btnWpp' onclick='enviarWpp()' disabled>WPP</button>
-<button id='btnCopiar' onclick='copiar()' disabled>COPI+ID</button>
+<button id='btnCopiar' onclick='copiar()' disabled>COPIAR +ID</button>
 <hr style='margin:25px 0;border-color:#333;'>
 <h3>Cotización por Fechas</h3>
 <div style='display:flex;gap:10px;flex-wrap:wrap;align-items:center;'>
@@ -692,7 +692,7 @@ function copiar(){
   if(firma) texto+='\n\n'+firma.textContent;
   navigator.clipboard.writeText(texto);
   b.textContent='COPIADO OK';b.classList.add('copiado');
-  setTimeout(function(){b.textContent='COPI+ID';b.classList.remove('copiado');},1500);
+  setTimeout(function(){b.textContent='COPIAR +ID';b.classList.remove('copiado');},1500);
 }
 function copiarWpp(){
   var t=el('resultado').textContent.trim();
@@ -819,5 +819,5 @@ window.addEventListener('load',function(){
 Periodo <input id='v_per' style='width:70px;'> Personas <input id='v_pers' style='width:40px;'> Precio <input id='v_precio' style='width:70px;'> Fecha <input id='v_fecha' style='width:80px;'> Firma <input id='v_firma' style='width:80px;'>
 <br><br><button id='btnVerificar' onclick='verificar()' disabled>VERIFICAR</button><div id='v_resultado' class='verifBox'></div>
 </div>
-<div class='version'>Ver. v3.03 06-May-26 / Database 06-May-26 19:11</div>
+<div class='version'>Ver. v3.03 06-May-26 / Database 06-May-26 19:18</div>
 </div></body></html>
