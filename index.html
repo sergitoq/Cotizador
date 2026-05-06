@@ -691,7 +691,7 @@ function copiar(){
   var firma=document.querySelector('.firma');
   if(firma) texto+='\n\n'+firma.textContent;
   navigator.clipboard.writeText(texto);
-  b.textContent='COPIADO OK';b.classList.add('copiado');
+  b.textContent='COPIA OK';b.classList.add('copiado');
   setTimeout(function(){b.textContent='COPIAR +ID';b.classList.remove('copiado');},1500);
 }
 function copiarWpp(){
@@ -699,7 +699,7 @@ function copiarWpp(){
   if(!t) return;
   navigator.clipboard.writeText(t);
   var b=el('btnCopiarWpp');if(!b) return;
-  b.textContent='COPIADO OK';b.classList.add('copiado');
+  b.textContent='COPIA OK';b.classList.add('copiado');
   setTimeout(function(){b.textContent='COPIAR';b.classList.remove('copiado');},1500);
 }
 function enviarWpp(){
@@ -711,7 +711,7 @@ function copiarLargo(){
   if(el('cotizacion').textContent.trim()==='') return;
   navigator.clipboard.writeText(el('cotizacion').textContent);
   var b=el('btnCopiarLargo');if(!b) return;
-  b.textContent='COPIADO OK';b.classList.add('copiado');
+  b.textContent='COPIA OK';b.classList.add('copiado');
   setTimeout(function(){b.textContent='COPIAR Extendida';b.classList.remove('copiado');},1500);
 }
 function enviarWppLargo(){
@@ -724,7 +724,7 @@ function copiarFechas(){
   if(!t) return;
   navigator.clipboard.writeText(t);
   const b=el('btnCopiarFechas');
-  b.textContent='COPIADO OK';b.classList.add('copiado');
+  b.textContent='COPIA OK';b.classList.add('copiado');
   setTimeout(function(){b.textContent='COPIAR';b.classList.remove('copiado');},1500);
 }
 function enviarWppFechas(){
@@ -819,5 +819,5 @@ window.addEventListener('load',function(){
 Periodo <input id='v_per' style='width:70px;'> Personas <input id='v_pers' style='width:40px;'> Precio <input id='v_precio' style='width:70px;'> Fecha <input id='v_fecha' style='width:80px;'> Firma <input id='v_firma' style='width:80px;'>
 <br><br><button id='btnVerificar' onclick='verificar()' disabled>VERIFICAR</button><div id='v_resultado' class='verifBox'></div>
 </div>
-<div class='version'>Ver. v3.03 06-May-26 / Database 06-May-26 19:18</div>
+<div class='version'>Ver. v3.03 06-May-26 / Database 06-May-26 19:20</div>
 </div></body></html>
