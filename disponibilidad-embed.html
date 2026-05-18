@@ -11,19 +11,24 @@
 body{font-family:'Outfit',sans-serif;font-weight:400;background:#0e2318;color:rgba(255,255,255,0.7);}
 a{color:inherit;text-decoration:none;}
 .content{max-width:900px;margin:0 auto;padding:1rem 0.75rem 2rem;}
-.temporada{margin-bottom:4rem;}
-.temporada h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:#fff;
-  margin-bottom:1.5rem;padding-bottom:0.75rem;
-  border-bottom:1px solid rgba(255,255,255,0.1);}
+@media(max-width:600px){
+  .content{padding:1rem 0.5rem 1.5rem;}
+  thead th{padding:0.5rem 0.3rem;font-size:0.65rem;letter-spacing:0.08em;}
+  thead th.frente,thead th.fondo{font-size:0.6rem;}
+  tbody td{padding:0.4rem 0.3rem;font-size:0.82rem;}
+  tbody td.fecha{font-size:0.72rem;}
+  .badge-disp,.badge-cons{font-size:0.65rem;padding:0.2rem 0.4rem;}
+  .temporada h2{font-size:1.3rem;}
+}
 table{width:100%;border-collapse:collapse;}
-thead th{font-size:0.78rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
-  padding:0.6rem 0.6rem;text-align:left;border-bottom:2px solid rgba(255,255,255,0.1);}
+thead th{font-size:0.72rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;
+  padding:0.75rem 1rem;text-align:left;border-bottom:2px solid rgba(255,255,255,0.1);}
 thead th.frente{color:#7ed4e8;text-align:center;}
 thead th.fondo{color:#e07b3a;text-align:center;}
 tbody tr{border-bottom:1px solid rgba(255,255,255,0.05);transition:background .2s;}
 tbody tr:hover{background:rgba(255,255,255,0.04);}
-tbody td{padding:0.5rem 0.6rem;font-size:1rem;color:rgba(255,255,255,0.7);}
-tbody td.fecha{color:rgba(255,255,255,0.45);font-size:0.92rem;}
+tbody td{padding:0.75rem 1rem;font-size:0.9rem;color:rgba(255,255,255,0.7);}
+tbody td.fecha{color:rgba(255,255,255,0.45);font-size:0.82rem;}
 tbody td.disponible{text-align:center;}
 .badge-disp{display:inline-block;background:#1f4a2e;color:#4ade80;
   font-size:0.75rem;font-weight:600;padding:0.25rem 0.75rem;border-radius:2rem;
@@ -34,6 +39,10 @@ tbody td.disponible{text-align:center;}
   font-size:0.75rem;font-weight:600;padding:0.25rem 0.75rem;border-radius:2rem;
   border:1px solid rgba(240,167,66,0.3);}
 .badge-vacio{display:inline-block;width:20px;height:2px;background:rgba(255,255,255,0.1);border-radius:2px;}
+.temporada{margin-bottom:4rem;}
+.temporada h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:#fff;
+  margin-bottom:1.5rem;padding-bottom:0.75rem;
+  border-bottom:1px solid rgba(255,255,255,0.1);}
 .cta-box{background:#1a2a20;border-radius:12px;padding:2.5rem;text-align:center;margin-top:2rem;}
 .cta-box h3{font-family:'Playfair Display',serif;font-size:1.6rem;color:#fff;margin-bottom:0.75rem;}
 .cta-box p{color:rgba(255,255,255,0.55);margin-bottom:2rem;}
@@ -42,15 +51,6 @@ tbody td.disponible{text-align:center;}
   font-size:1rem;font-weight:600;transition:all .25s;}
 .btn-wa:hover{background:#1ebe5d;transform:translateY(-2px);}
 .version{color:rgba(255,255,255,0.2);font-size:0.7rem;text-align:right;margin-top:1rem;}
-@media(max-width:600px){
-  .content{padding:1rem 0.5rem 1.5rem;}
-  thead th{padding:0.5rem 0.3rem;font-size:0.65rem;letter-spacing:0.08em;}
-  thead th.frente,thead th.fondo{font-size:0.6rem;}
-  tbody td{padding:0.4rem 0.3rem;font-size:0.82rem;}
-  tbody td.fecha{font-size:0.72rem;}
-  .badge-disp,.badge-cons{font-size:0.65rem;padding:0.2rem 0.4rem;}
-  .temporada h2{font-size:1.3rem;}
-}
 </style></head>
 <body>
 <main class='content'>
@@ -222,6 +222,6 @@ tbody td.disponible{text-align:center;}
       WhatsApp &#8212; Sergio
     </a>
   </div>
-  <p class='version'>Versión 18/May/26 08:45</p>
+  <p class='version'>Versi&#243;n 18/May/26 11:12</p>
 </main>
 </body></html>
